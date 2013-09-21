@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Blogging, | RuiOnWriting.NET]]></title>
-  <link href="http://ruionwriting.github.io/blog/categories/blogging/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Octopress | RuiOnWriting.NET]]></title>
+  <link href="http://ruionwriting.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://ruionwriting.github.io/"/>
   <updated>2013-09-21T21:59:45+01:00</updated>
   <id>http://ruionwriting.github.io/</id>
