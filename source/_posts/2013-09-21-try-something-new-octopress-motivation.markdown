@@ -3,7 +3,7 @@ layout: post
 title: "Try something new: Octopress motivation"
 date: 2013-09-21 15:28
 comments: true
-categories: Blogging, Octopress
+categories: [Blogging, Octopress]
 description: "The reason behind the decision to (re)start my blog from scratch and why Octopress."
 keywords: "octopress, blogging with octopress, rui marques, ruionwriting"
 ---
