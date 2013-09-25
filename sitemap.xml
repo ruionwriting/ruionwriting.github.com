@@ -1,31 +1,29 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>
-            http://ruionwriting.github.io/blog/2013/09/21/try-something-new-octopress-motivation/
-        </loc>
+        <loc>http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/</loc>
         <lastmod>2013-09-24T20:40:30+01:00</lastmod>
     </url>
     <url>
         <loc>
-            http://ruionwriting.github.io/blog/2013/09/24/the-best-web-application-framework-utopia/
+            http://ruionwriting.net/blog/2013/09/24/the-best-web-application-framework-utopia/
         </loc>
         <lastmod>2013-09-24T21:23:20+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ruionwriting.github.io/</loc>
+        <loc>http://ruionwriting.net/</loc>
         <lastmod>2013-09-24T21:23:20+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ruionwriting.github.io/about/</loc>
+        <loc>http://ruionwriting.net/about/</loc>
         <lastmod>2013-09-24T21:04:04+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ruionwriting.github.io/robots.txt</loc>
+        <loc>http://ruionwriting.net/robots.txt</loc>
         <lastmod>2013-09-21T15:03:32+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ruionwriting.github.io/blog/archives/</loc>
+        <loc>http://ruionwriting.net/blog/archives/</loc>
         <lastmod>2013-09-24T21:23:20+01:00</lastmod>
     </url>
 </urlset>

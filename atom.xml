@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[RuiOnWriting.NET]]></title>
-  <link href="http://ruionwriting.github.io/atom.xml" rel="self"/>
-  <link href="http://ruionwriting.github.io/"/>
-  <updated>2013-09-24T21:23:29+01:00</updated>
-  <id>http://ruionwriting.github.io/</id>
+  <link href="http://ruionwriting.net/atom.xml" rel="self"/>
+  <link href="http://ruionwriting.net/"/>
+  <updated>2013-09-25T07:59:28+01:00</updated>
+  <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The best web application framework utopia]]></title>
-    <link href="http://ruionwriting.github.io/blog/2013/09/24/the-best-web-application-framework-utopia/"/>
+    <link href="http://ruionwriting.net/blog/2013/09/24/the-best-web-application-framework-utopia/"/>
     <updated>2013-09-24T20:42:00+01:00</updated>
-    <id>http://ruionwriting.github.io/blog/2013/09/24/the-best-web-application-framework-utopia</id>
+    <id>http://ruionwriting.net/blog/2013/09/24/the-best-web-application-framework-utopia</id>
     <content type="html"><![CDATA[<p>Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&hellip; Ok! Not really :P<!-- more --></p>
 
 <p>The truth is that, most of the time, is hard to move away without throwing our own perspective. I did that the past and I admit that I was a bit fundamentalist defending my own perspective.</p>
@@ -42,9 +42,9 @@
   
   <entry>
     <title type="html"><![CDATA[Try something new: Octopress motivation]]></title>
-    <link href="http://ruionwriting.github.io/blog/2013/09/21/try-something-new-octopress-motivation/"/>
+    <link href="http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/"/>
     <updated>2013-09-21T15:28:00+01:00</updated>
-    <id>http://ruionwriting.github.io/blog/2013/09/21/try-something-new-octopress-motivation</id>
+    <id>http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation</id>
     <content type="html"><![CDATA[<p>Real blogging, like <a href="http://www.hanselman.com/blog/">Scott Hanselman</a> does (and many others), is a serious thing that requires discipline and a personal commitment. I’ve failed to do anything even close <em>(&lt;1%???)</em> of what Scott does concerning sharing with the community real stuff that teach and empower any developer skills.<!-- more --></p>
 
 <h2>I’m a failed blogger</h2>
