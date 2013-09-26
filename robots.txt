@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow: /error/ 
 
 Sitemap: http://ruionwriting.net/sitemap.xml 
