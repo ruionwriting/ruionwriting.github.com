@@ -6,7 +6,7 @@ comments: true
 categories: [Frameworks, Web development]
 keywords: "php, asp.net, framework, web"
 ---
-Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle... Ok! Not really :P<!-- more -->
+Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle... Ok! Not really :P<!-- more -->
 
 The truth is that, most of the time, is hard to move away without throwing our own perspective. I did that the past and I admit that I was a bit fundamentalist defending my own perspective.
 
