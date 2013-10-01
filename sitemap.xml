@@ -11,12 +11,18 @@
         <lastmod>2013-10-01T21:54:43+01:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/
+        </loc>
+        <lastmod>2013-10-01T23:03:12+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://ruionwriting.net/404.html</loc>
         <lastmod>2013-09-26T21:01:08+01:00</lastmod>
     </url>
     <url>
         <loc>http://ruionwriting.net/</loc>
-        <lastmod>2013-10-01T21:54:43+01:00</lastmod>
+        <lastmod>2013-10-01T23:03:12+01:00</lastmod>
     </url>
     <url>
         <loc>http://ruionwriting.net/about/</loc>
@@ -28,6 +34,6 @@
     </url>
     <url>
         <loc>http://ruionwriting.net/blog/archives/</loc>
-        <lastmod>2013-10-01T21:54:43+01:00</lastmod>
+        <lastmod>2013-10-01T23:03:12+01:00</lastmod>
     </url>
 </urlset>

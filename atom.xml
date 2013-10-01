@@ -4,7 +4,7 @@
   <title><![CDATA[RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2013-10-01T22:12:33+01:00</updated>
+  <updated>2013-10-01T23:03:51+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -12,6 +12,177 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Handling ASP.NET PostBacks with URL Rewriting]]></title>
+    <link href="http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/"/>
+    <updated>2013-10-01T22:18:00+01:00</updated>
+    <id>http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting</id>
+    <content type="html"><![CDATA[<p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed&hellip;</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu&rsquo;s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.<!-- more --></p>
+
+<p>A few minutes afeter I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with IIRF. The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu&rsquo;s. Since my language of choice is C# I’m going to share the solution right here:</p>
+
+<h2>Step 1</h2>
+
+<p><strong>Create a FormRewriterControlAdapter class</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>using System;
+</span><span class='line'>using System.Data;
+</span><span class='line'>using System.Configuration;
+</span><span class='line'>using System.Linq;
+</span><span class='line'>using System.Web;
+</span><span class='line'>using System.Web.Security;
+</span><span class='line'>using System.Web.UI;
+</span><span class='line'>using System.Web.UI.HtmlControls;
+</span><span class='line'>using System.Web.UI.WebControls;
+</span><span class='line'>using System.Web.UI.WebControls.WebParts;
+</span><span class='line'>using System.Xml.Linq;
+</span><span class='line'>
+</span><span class='line'>public class FormRewriterControlAdapter : System.Web.UI.Adapters.ControlAdapter
+</span><span class='line'>{
+</span><span class='line'>    protected override void Render(HtmlTextWriter writer)
+</span><span class='line'>    {
+</span><span class='line'>        base.Render(new RewriteFormHtmlTextWriter(writer));
+</span><span class='line'>    }
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>public class RewriteFormHtmlTextWriter : HtmlTextWriter
+</span><span class='line'>{
+</span><span class='line'>    public RewriteFormHtmlTextWriter(HtmlTextWriter writer) : base(writer)
+</span><span class='line'>    {
+</span><span class='line'>        this.InnerWriter = writer.InnerWriter;
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public RewriteFormHtmlTextWriter(System.IO.TextWriter writer) : base (writer)
+</span><span class='line'>    {
+</span><span class='line'>        base.InnerWriter = writer;
+</span><span class='line'>    }
+</span><span class='line'>
+</span><span class='line'>    public override void WriteAttribute(string name, string value, bool fEncode)
+</span><span class='line'>    {
+</span><span class='line'>        // If the attribute we are writing is the "action" attribute, and we are not on a sub-control,
+</span><span class='line'>        // then replace the value to write with the raw URL of the request - which ensures that we'll
+</span><span class='line'>        // preserve the PathInfo value on postback scenarios
+</span><span class='line'>
+</span><span class='line'>        if (name == "action")
+</span><span class='line'>        {
+</span><span class='line'>            HttpContext context = HttpContext.Current;
+</span><span class='line'>
+</span><span class='line'>            if (context.Items["ActionAlreadyWritten"] == null)
+</span><span class='line'>            {
+</span><span class='line'>                // Because we are using an url reweriting HttpModule, we will use the
+</span><span class='line'>                // Request.RawUrl property within ASP.NET to retrieve the origional URL
+</span><span class='line'>                // before it was re-written.  You'll want to change the line of code below
+</span><span class='line'>                // if you use a different URL rewriting implementation.
+</span><span class='line'>
+</span><span class='line'>                // value = context.Request.RawUrl;
+</span><span class='line'>                value = context.Request.ServerVariables["HTTP_X_REWRITE_URL"];
+</span><span class='line'>
+</span><span class='line'>                // Indicate that we've already rewritten the &lt;form&gt;'s action attribute to prevent
+</span><span class='line'>                // us from rewriting a sub-control under the &lt;form&gt; control
+</span><span class='line'>
+</span><span class='line'>                context.Items["ActionAlreadyWritten"] = true;
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>
+</span><span class='line'>        base.WriteAttribute(name, value, fEncode);
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Step 2</h2>
+
+<p><strong>Add adapter to App_Browsers</strong></p>
+
+<ol>
+<li>Add <code>ASP.NET</code> folder if it does not exists;</li>
+<li>Create <code>Form.browser</code>:</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;browsers&gt;
+</span><span class='line'>    &lt;browser refID="Default"&gt;
+</span><span class='line'>        &lt;controlAdapters&gt;
+</span><span class='line'>            &lt;adapter controlType="System.Web.UI.HtmlControls.HtmlForm"
+</span><span class='line'>                adapterType="FormRewriterControlAdapter" /&gt;
+</span><span class='line'>        &lt;/controlAdapters&gt;
+</span><span class='line'>    &lt;/browser&gt;
+</span><span class='line'>&lt;/browsers&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope you’ll find this information useful.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The best web application framework utopia]]></title>
