@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2013-10-02T22:22:54+01:00</updated>
+  <updated>2013-10-02T22:42:52+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -20,7 +20,7 @@
     <id>http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting</id>
     <content type="html"><![CDATA[<p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed&hellip;</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu&rsquo;s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.<!-- more --></p>
 
-<p>A few minutes afeter I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with IIRF. The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu&rsquo;s. Since my language of choice is C# I’m going to share the solution right here:</p>
+<p>A few minutes after I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with IIRF. The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu&rsquo;s. Since my language of choice is C# I’m going to share the solution right here:</p>
 
 <h2>Step 1</h2>
 
