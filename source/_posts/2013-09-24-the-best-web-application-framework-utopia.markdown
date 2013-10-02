@@ -3,7 +3,7 @@ layout: post
 title: "The best web application framework utopia"
 date: 2013-09-24 20:42
 comments: true
-categories: [Frameworks, Web development]
+categories: [Frameworks, Web development, ASP.NET]
 keywords: "php, asp.net, framework, web"
 ---
 Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle... Ok! Not really :P<!-- more -->

@@ -3,12 +3,12 @@ layout: post
 title: "Handling ASP.NET PostBacks with URL Rewriting"
 date: 2013-10-01 22:18
 comments: true
-categories: [ASP.NET, C#, Web development]
-keywords: "asp.net, C#, web, url rewriting"
+categories: [ASP.NET, C#, Web development, IIS]
+keywords: "asp.net, C#, web, url rewriting, IIRF"
 ---
 Recently a collegue develop crossed with this strange error **_Validation of viewstate MAC failed..._** when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (`contacts/`), calling `contacts.aspx` directly worked flawlessly. This is a C# port based on ScottGu's [solution](http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx).<!-- more -->
 
-A few minutes afeter I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with IIRF. The problem is that when using url-rewriting the `<form>` control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu's. Since my language of choice is C# I’m going to share the solution right here:
+A few minutes after I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with [IIRF](http://iirf.codeplex.com/) (it was a requirement). The problem is that when using url-rewriting the `<form>` control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu's. Since my language of choice is C# I’m going to share the solution right here:
 
 ## Step 1
 **Create a FormRewriterControlAdapter class**
