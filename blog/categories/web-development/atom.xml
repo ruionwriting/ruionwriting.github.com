@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web development | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2013-10-01T23:03:51+01:00</updated>
+  <updated>2013-10-02T21:29:44+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -26,7 +26,7 @@
 
 <p><strong>Create a FormRewriterControlAdapter class</strong></p>
 
-<p>```<br/>
+<p>``` csharp
 using System;
 using System.Data;
 using System.Configuration;
@@ -107,19 +107,29 @@ public override void WriteAttribute(string name, string value, bool fEncode)
 </ol>
 
 
-<p>```
-<browsers></p>
-
-<pre><code>&lt;browser refID="Default"&gt;
-    &lt;controlAdapters&gt;
-        &lt;adapter controlType="System.Web.UI.HtmlControls.HtmlForm"
-            adapterType="FormRewriterControlAdapter" /&gt;
-    &lt;/controlAdapters&gt;
-&lt;/browser&gt;
-</code></pre>
-
-<p></browsers>
-```</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;browsers&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>browser refID=&quot;Default&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>controlAdapters<span class="ni">&amp;gt;</span>
+</span><span class='line'>        <span class="ni">&amp;lt;</span>adapter controlType=&quot;System.Web.UI.HtmlControls.HtmlForm&quot;
+</span><span class='line'>            adapterType=&quot;FormRewriterControlAdapter&quot; /<span class="ni">&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>/controlAdapters<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>/browser<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;/browsers&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>I hope you’ll find this information useful.</p>
 ]]></content>

@@ -100,7 +100,7 @@
 
 <p><strong>Create a FormRewriterControlAdapter class</strong></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -162,68 +162,69 @@
 <span class='line-number'>60</span>
 <span class='line-number'>61</span>
 <span class='line-number'>62</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>using System;
-</span><span class='line'>using System.Data;
-</span><span class='line'>using System.Configuration;
-</span><span class='line'>using System.Linq;
-</span><span class='line'>using System.Web;
-</span><span class='line'>using System.Web.Security;
-</span><span class='line'>using System.Web.UI;
-</span><span class='line'>using System.Web.UI.HtmlControls;
-</span><span class='line'>using System.Web.UI.WebControls;
-</span><span class='line'>using System.Web.UI.WebControls.WebParts;
-</span><span class='line'>using System.Xml.Linq;
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Data</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Configuration</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.Security</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.HtmlControls</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.WebControls</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.WebControls.WebParts</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Xml.Linq</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>public class FormRewriterControlAdapter : System.Web.UI.Adapters.ControlAdapter
-</span><span class='line'>{
-</span><span class='line'>    protected override void Render(HtmlTextWriter writer)
-</span><span class='line'>    {
-</span><span class='line'>        base.Render(new RewriteFormHtmlTextWriter(writer));
-</span><span class='line'>    }
-</span><span class='line'>}
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">FormRewriterControlAdapter</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Adapters</span><span class="p">.</span><span class="n">ControlAdapter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">Render</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">writer</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>public class RewriteFormHtmlTextWriter : HtmlTextWriter
-</span><span class='line'>{
-</span><span class='line'>    public RewriteFormHtmlTextWriter(HtmlTextWriter writer) : base(writer)
-</span><span class='line'>    {
-</span><span class='line'>        this.InnerWriter = writer.InnerWriter;
-</span><span class='line'>    }
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">RewriteFormHtmlTextWriter</span> <span class="p">:</span> <span class="n">HtmlTextWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">.</span><span class="n">InnerWriter</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>    public RewriteFormHtmlTextWriter(System.IO.TextWriter writer) : base (writer)
-</span><span class='line'>    {
-</span><span class='line'>        base.InnerWriter = writer;
-</span><span class='line'>    }
+</span><span class='line'>    <span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">TextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span> <span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>    public override void WriteAttribute(string name, string value, bool fEncode)
-</span><span class='line'>    {
-</span><span class='line'>        // If the attribute we are writing is the "action" attribute, and we are not on a sub-control,
-</span><span class='line'>        // then replace the value to write with the raw URL of the request - which ensures that we'll
-</span><span class='line'>        // preserve the PathInfo value on postback scenarios
+</span><span class='line'>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">WriteAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="k">value</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">fEncode</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// If the attribute we are writing is the &quot;action&quot; attribute, and we are not on a sub-control,</span>
+</span><span class='line'>        <span class="c1">// then replace the value to write with the raw URL of the request - which ensures that we&#39;ll</span>
+</span><span class='line'>        <span class="c1">// preserve the PathInfo value on postback scenarios</span>
 </span><span class='line'>
-</span><span class='line'>        if (name == "action")
-</span><span class='line'>        {
-</span><span class='line'>            HttpContext context = HttpContext.Current;
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="p">==</span> <span class="s">&quot;action&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">HttpContext</span> <span class="n">context</span> <span class="p">=</span> <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'>            if (context.Items["ActionAlreadyWritten"] == null)
-</span><span class='line'>            {
-</span><span class='line'>                // Because we are using an url reweriting HttpModule, we will use the
-</span><span class='line'>                // Request.RawUrl property within ASP.NET to retrieve the origional URL
-</span><span class='line'>                // before it was re-written.  You'll want to change the line of code below
-</span><span class='line'>                // if you use a different URL rewriting implementation.
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;ActionAlreadyWritten&quot;</span><span class="p">]</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="c1">// Because we are using an url reweriting HttpModule, we will use the</span>
+</span><span class='line'>                <span class="c1">// Request.RawUrl property within ASP.NET to retrieve the origional URL</span>
+</span><span class='line'>                <span class="c1">// before it was re-written.  You&#39;ll want to change the line of code below</span>
+</span><span class='line'>                <span class="c1">// if you use a different URL rewriting implementation.</span>
 </span><span class='line'>
-</span><span class='line'>                // value = context.Request.RawUrl;
-</span><span class='line'>                value = context.Request.ServerVariables["HTTP_X_REWRITE_URL"];
+</span><span class='line'>                <span class="c1">// value = context.Request.RawUrl;</span>
+</span><span class='line'>                <span class="k">value</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">ServerVariables</span><span class="p">[</span><span class="s">&quot;HTTP_X_REWRITE_URL&quot;</span><span class="p">];</span>
 </span><span class='line'>
-</span><span class='line'>                // Indicate that we've already rewritten the &lt;form&gt;'s action attribute to prevent
-</span><span class='line'>                // us from rewriting a sub-control under the &lt;form&gt; control
+</span><span class='line'>                <span class="c1">// Indicate that we&#39;ve already rewritten the &lt;form&gt;&#39;s action attribute to prevent</span>
+</span><span class='line'>                <span class="c1">// us from rewriting a sub-control under the &lt;form&gt; control</span>
 </span><span class='line'>
-</span><span class='line'>                context.Items["ActionAlreadyWritten"] = true;
-</span><span class='line'>            }
-</span><span class='line'>        }
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;ActionAlreadyWritten&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>        base.WriteAttribute(name, value, fEncode);
-</span><span class='line'>    }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">WriteAttribute</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">fEncode</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h2>Step 2</h2>
@@ -236,7 +237,7 @@
 </ol>
 
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -244,14 +245,15 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;browsers&gt;
-</span><span class='line'>    &lt;browser refID="Default"&gt;
-</span><span class='line'>        &lt;controlAdapters&gt;
-</span><span class='line'>            &lt;adapter controlType="System.Web.UI.HtmlControls.HtmlForm"
-</span><span class='line'>                adapterType="FormRewriterControlAdapter" /&gt;
-</span><span class='line'>        &lt;/controlAdapters&gt;
-</span><span class='line'>    &lt;/browser&gt;
-</span><span class='line'>&lt;/browsers&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;browsers&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;browser</span> <span class="na">refID=</span><span class="s">&quot;Default&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;controlAdapters&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;adapter</span> <span class="na">controlType=</span><span class="s">&quot;System.Web.UI.HtmlControls.HtmlForm&quot;</span>
+</span><span class='line'>                <span class="na">adapterType=</span><span class="s">&quot;FormRewriterControlAdapter&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/controlAdapters&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/browser&gt;</span>
+</span><span class='line'><span class="nt">&lt;/browsers&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>I hope you’ll find this information useful.</p>
