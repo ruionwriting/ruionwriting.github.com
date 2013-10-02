@@ -21,11 +21,10 @@
   <link rel="canonical" href="http://ruionwriting.net/error/404-not-found.html">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="RuiOnWriting.NET" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="RuiOnWriting.NET" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,14 +34,6 @@
 </head>
 
 <body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">RuiOnWriting.NET</a></h1>
-  
-    <h2>Trying to learn something every day.</h2>
-  
-</hgroup>
-
-</header>
   <nav role="navigation"><ul class="subscription" data-subscription="rss">
   <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
   
@@ -56,9 +47,19 @@
 </form>
   
 <ul class="main-navigation">
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Blog</a></li>
-    <li><a href="/blog/archives">Archives</a></li>
+    <li><a href="/">
+        <span class="blue_light">
+            RuiOnWriting.NET
+        </span>
+       
+           <span class="blue_dark">
+             .net coding and stuff
+           </span>
+       
+    </a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About me</a></li>
 </ul>
 
 </nav>
@@ -120,6 +121,8 @@
 <li class='category'><a href='/blog/categories/web-development/'>Web development (2)</a></li>
 
     </ul>
+    <br />
+    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer's view in any way.</p>
 </section>
 
 
@@ -142,8 +145,9 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Rui Marques -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+Copyright &copy; 2013 - Rui Marques -
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> and 
+<span class="credit"><a href="https://github.com/wallace/justin-kelly-theme">justin-kelly-theme</a></span> 
 </p>
 
 </footer>
@@ -155,7 +159,7 @@
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id; js.async = true;
+  js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -177,7 +181,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
