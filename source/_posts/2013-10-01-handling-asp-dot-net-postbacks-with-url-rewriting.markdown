@@ -13,7 +13,7 @@ A few minutes afeter I’ve remembered that I had to strugle with this issue whe
 ## Step 1
 **Create a FormRewriterControlAdapter class**
 
-```  
+{% codeblock lang:csharp FormRewriterControlAdapter.cs %}
 using System;
 using System.Data;
 using System.Configuration;
@@ -76,14 +76,15 @@ public class RewriteFormHtmlTextWriter : HtmlTextWriter
         base.WriteAttribute(name, value, fEncode);
     }
 }
-```
+{% endcodeblock %}
+
 ## Step 2
 **Add adapter to App_Browsers**
 
 1. Add `ASP.NET` folder if it does not exists;
 2. Create `Form.browser`:
 
-{% codeblock %}
+{% codeblock lang:xml Form.browser %}
 <browsers>
     <browser refID="Default">
         <controlAdapters>
