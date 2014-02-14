@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Handling ASP.NET PostBacks with URL Rewriting - RuiOnWriting.NET</title>
+  <meta name="author" content="Rui Marques">
+
+  
+  <meta name="description" content="Recently a collegue develop crossed with this strange error Validation of viewstate MAC failed&hellip; when posting a contacts form. Strangely the &hellip;">
+  <meta name="keywords" content="asp.net, C#, web, url rewriting, IIRF">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="RuiOnWriting.NET" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ruionwriting.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+    <li><a href="/">
+        <span class="blue_light">
+            RuiOnWriting.NET
+        </span>
+       
+           <span class="blue_dark">
+             .net coding and stuff
+           </span>
+       
+    </a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Handling ASP.NET PostBacks with URL Rewriting</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-01T22:18:00+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed&hellip;</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu&rsquo;s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.<!-- more --></p>
+
+<p>A few minutes after I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with <a href="http://iirf.codeplex.com/">IIRF</a> (it was a requirement). The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu&rsquo;s. Since my language of choice is C# I’m going to share the solution right here:</p>
+
+<h2>Step 1</h2>
+
+<p><strong>Create a FormRewriterControlAdapter class</strong></p>
+
+<figure class='code'><figcaption><span>FormRewriterControlAdapter.cs </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+</pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Data</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Configuration</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.Security</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.HtmlControls</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.WebControls</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Web.UI.WebControls.WebParts</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="nn">System.Xml.Linq</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">FormRewriterControlAdapter</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Adapters</span><span class="p">.</span><span class="n">ControlAdapter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">Render</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">writer</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span> <span class="k">class</span> <span class="nc">RewriteFormHtmlTextWriter</span> <span class="p">:</span> <span class="n">HtmlTextWriter</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">.</span><span class="n">InnerWriter</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">TextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span> <span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">WriteAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">string</span> <span class="k">value</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">fEncode</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="c1">// If the attribute we are writing is the &quot;action&quot; attribute, and we are not on a sub-control,</span>
+</span><span class='line'>        <span class="c1">// then replace the value to write with the raw URL of the request - which ensures that we&#39;ll</span>
+</span><span class='line'>        <span class="c1">// preserve the PathInfo value on postback scenarios</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="p">==</span> <span class="s">&quot;action&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">HttpContext</span> <span class="n">context</span> <span class="p">=</span> <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span> <span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;ActionAlreadyWritten&quot;</span><span class="p">]</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="c1">// Because we are using an url reweriting HttpModule, we will use the</span>
+</span><span class='line'>                <span class="c1">// Request.RawUrl property within ASP.NET to retrieve the origional URL</span>
+</span><span class='line'>                <span class="c1">// before it was re-written.  You&#39;ll want to change the line of code below</span>
+</span><span class='line'>                <span class="c1">// if you use a different URL rewriting implementation.</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// value = context.Request.RawUrl;</span>
+</span><span class='line'>                <span class="k">value</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">ServerVariables</span><span class="p">[</span><span class="s">&quot;HTTP_X_REWRITE_URL&quot;</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="c1">// Indicate that we&#39;ve already rewritten the &lt;form&gt;&#39;s action attribute to prevent</span>
+</span><span class='line'>                <span class="c1">// us from rewriting a sub-control under the &lt;form&gt; control</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="n">context</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="s">&quot;ActionAlreadyWritten&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">WriteAttribute</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">fEncode</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Step 2</h2>
+
+<p><strong>Add adapter to App_Browsers</strong></p>
+
+<ol>
+<li>Add <code>ASP.NET</code> folder if it does not exists;</li>
+<li>Create <code>Form.browser</code>:</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>Form.browser </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;browsers&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;browser</span> <span class="na">refID=</span><span class="s">&quot;Default&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;controlAdapters&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;adapter</span> <span class="na">controlType=</span><span class="s">&quot;System.Web.UI.HtmlControls.HtmlForm&quot;</span>
+</span><span class='line'>                <span class="na">adapterType=</span><span class="s">&quot;FormRewriterControlAdapter&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/controlAdapters&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/browser&gt;</span>
+</span><span class='line'><span class="nt">&lt;/browsers&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I hope you’ll find this information useful.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Rui Marques</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-01T22:18:00+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/asp-dot-net/'>ASP.NET</a>, <a class='category' href='/blog/categories/c-number/'>C#</a>, <a class='category' href='/blog/categories/iis/'>IIS</a>, <a class='category' href='/blog/categories/web-development/'>Web development</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/24/the-best-web-application-framework-utopia/" title="Previous Post: The best web application framework utopia">&laquo; The best web application framework utopia</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+    <h1>About Me</h1>
+    <p><img class="left" src="/images/RuiMarques.jpg" width="77" title="Rui Marques" > Hi, my name is Rui Marques. I’m a .NET programmer. Currently I work as senior developer at GradWeb, UK’s leading graduate, entry-level and volume recruitment specialist. I’m also a Parallels Certified Automation Professional both for Linux and Windows.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Handling ASP.NET PostBacks with URL Rewriting</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/the-best-web-application-framework-utopia/">The best web application framework utopia</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/21/try-something-new-octopress-motivation/">Try something new: Octopress motivation</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+    <h1>Categories</h1>
+    <ul id="categories">
+        <li class='category'><a href='/blog/categories/asp-net/'>ASP.NET (2)</a></li>
+<li class='category'><a href='/blog/categories/blogging/'>Blogging (1)</a></li>
+<li class='category'><a href='/blog/categories/c-/'>C# (1)</a></li>
+<li class='category'><a href='/blog/categories/frameworks/'>Frameworks (1)</a></li>
+<li class='category'><a href='/blog/categories/iis/'>IIS (1)</a></li>
+<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
+<li class='category'><a href='/blog/categories/web-development/'>Web development (2)</a></li>
+
+    </ul>
+    <br />
+    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer's view in any way.</p>
+</section>
+
+
+
+<section class="googleplus googleplus-hidden">
+  <h1>
+    <a href="https://plus.google.com/117718617897238411049?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+Copyright &copy; 2014 - Rui Marques -
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> and 
+<span class="credit"><a href="https://github.com/wallace/justin-kelly-theme">justin-kelly-theme</a></span> 
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ruionwriting';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/';
+        var disqus_url = 'http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

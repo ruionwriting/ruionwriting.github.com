@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /error/ 
+
+Sitemap: http://ruionwriting.net/sitemap.xml 
