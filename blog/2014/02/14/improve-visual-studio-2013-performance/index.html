@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Try something new: Octopress motivation - RuiOnWriting.NET</title>
+  <title>Improve Visual Studio 2013 performance - RuiOnWriting.NET</title>
   <meta name="author" content="Rui Marques">
 
   
-  <meta name="description" content="The reason behind the decision to (re)start my blog from scratch and why Octopress.">
-  <meta name="keywords" content="octopress, blogging with octopress, rui marques, ruionwriting">
+  <meta name="description" content="We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra &hellip;">
+  <meta name="keywords" content="performance, visual studio 2013, tools, windows 8">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/">
+  <link rel="canonical" href="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +70,7 @@
   
   <header>
     
-      <h1 class="entry-title">Try something new: Octopress motivation</h1>
+      <h1 class="entry-title">Improve Visual Studio 2013 performance</h1>
     
     
       <p class="meta">
@@ -86,26 +86,39 @@
   
 
 
-<time datetime="2013-09-21T15:28:00+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time>
+<time datetime="2014-02-14T21:36:00+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Real blogging, like <a href="http://www.hanselman.com/blog/">Scott Hanselman</a> does (and many others), is a serious thing that requires discipline and a personal commitment. I’ve failed to do anything even close <em>(&lt;1%???)</em> of what Scott does concerning sharing with the community real stuff that teach and empower any developer skills.<!-- more --></p>
+<div class="entry-content"><p>We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&rsquo;t caused by an extension?</p>
 
-<h2>I’m a failed blogger</h2>
+<p>I&rsquo;ve tested turning of something I really don&rsquo;t need and the fact is that I&rsquo;ve noticed some improvements.<!-- more --></p>
 
-<p>I&rsquo;ve a lot of excuses that sum up to NO TIME. What??? The truth is that I didn&rsquo;t really enforce a discipline to blogging and the excuse about not having spare time and patience fitted just perfectly all this time. 3 years after my first blog post I have to try something new: a personal commitment to write something useful and clear with more regularity.</p>
+<h2>Change visual experience settings</h2>
 
-<h2>I want to learn more</h2>
+<p>Go to <code>Tools &gt; Options</code>, in the default view of <code>Environment &gt; General</code>, there is an option, under <code>Visual experience</code> called <strong>Automatically adjust visual experience based on client performance</strong>.
+<img class="center" src="/images/2014-02-14_VS01.png" title="Visual experience (before)" ></p>
 
-<p>Blogging about findings/opinions (personal) related to my job daily challenges, problems and solutions is an opportunity to be a better programmer, person (yes, I work also with people) and ultimately a better professional.</p>
+<p>Turning this off will disable visual client visual experience and hardware graphics acceleration.</p>
 
-<h2>Why Octopress?</h2>
+<p><img class="center" src="/images/2014-02-14_VS02.png" title="Visual experience (after)" ></p>
 
-<p>Why not? I love <a href="http://git-scm.com/">git</a> and I want to learn new stuff so Octopress seems to be the perfect framework for it. Any Windows/.NET guy with some linux exposure will gain some extra skills in the process (empowers extra curiosity for Windows guts). Octopress it is, exiting confort zone&hellip;</p>
+<p>This will take effect after you restart Visual Studio.</p>
+
+<h2>Startup with an empty environment</h2>
+
+<p>This is more a personal preference. I don&rsquo;t want to wait for the default environment to load with news, latest opened projects/solutions/files, etc. Latest projects and files are always available through the <code>File</code> menu options.</p>
+
+<p><img class="center" src="/images/2014-02-14_VS03.png" title="Startup (before)" ></p>
+
+<p>Switch to empty environment and disable content download. It&rsquo;s strange to have content download enabled after switching to empty environment.</p>
+
+<p><img class="center" src="/images/2014-02-14_VS04.png" title="Startup (app)" ></p>
+
+<p>Now every time I start a new Visual Studio instance, I do that a lot during any normal work day, it loads clean and faster.</p>
 </div>
 
 
@@ -128,12 +141,12 @@
   
 
 
-<time datetime="2013-09-21T15:28:00+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2013</time>
+<time datetime="2014-02-14T21:36:00+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/blogging/'>Blogging</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+    <a class='category' href='/blog/categories/tools/'>Tools</a>, <a class='category' href='/blog/categories/visual-studio/'>Visual Studio</a>
   
 </span>
 
@@ -142,7 +155,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -155,8 +168,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/" title="Previous Post: Handling ASP.NET PostBacks with URL Rewriting">&laquo; Handling ASP.NET PostBacks with URL Rewriting</a>
       
-        <a class="basic-alignment right" href="/blog/2013/09/24/the-best-web-application-framework-utopia/" title="Next Post: The best web application framework utopia">The best web application framework utopia &raquo;</a>
       
     </p>
   </footer>
@@ -249,8 +262,8 @@ Copyright &copy; 2014 - Rui Marques -
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/';
-        var disqus_url = 'http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation/';
+        var disqus_identifier = 'http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/';
+        var disqus_url = 'http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/';
         var disqus_script = 'embed.js';
       
     (function () {

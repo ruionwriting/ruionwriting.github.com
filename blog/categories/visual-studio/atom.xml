@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Visual Studio | RuiOnWriting.NET]]></title>
+  <link href="http://ruionwriting.net/blog/categories/visual-studio/atom.xml" rel="self"/>
+  <link href="http://ruionwriting.net/"/>
+  <updated>2014-02-14T23:33:32+00:00</updated>
+  <id>http://ruionwriting.net/</id>
+  <author>
+    <name><![CDATA[Rui Marques]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Improve Visual Studio 2013 performance]]></title>
+    <link href="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/"/>
+    <updated>2014-02-14T21:36:00+00:00</updated>
+    <id>http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance</id>
+    <content type="html"><![CDATA[<p>We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&rsquo;t caused by an extension?</p>
+
+<p>I&rsquo;ve tested turning of something I really don&rsquo;t need and the fact is that I&rsquo;ve noticed some improvements.<!-- more --></p>
+
+<h2>Change visual experience settings</h2>
+
+<p>Go to <code>Tools &gt; Options</code>, in the default view of <code>Environment &gt; General</code>, there is an option, under <code>Visual experience</code> called <strong>Automatically adjust visual experience based on client performance</strong>.
+<img class="center" src="/images/2014-02-14_VS01.png" title="Visual experience (before)" ></p>
+
+<p>Turning this off will disable visual client visual experience and hardware graphics acceleration.</p>
+
+<p><img class="center" src="/images/2014-02-14_VS02.png" title="Visual experience (after)" ></p>
+
+<p>This will take effect after you restart Visual Studio.</p>
+
+<h2>Startup with an empty environment</h2>
+
+<p>This is more a personal preference. I don&rsquo;t want to wait for the default environment to load with news, latest opened projects/solutions/files, etc. Latest projects and files are always available through the <code>File</code> menu options.</p>
+
+<p><img class="center" src="/images/2014-02-14_VS03.png" title="Startup (before)" ></p>
+
+<p>Switch to empty environment and disable content download. It&rsquo;s strange to have content download enabled after switching to empty environment.</p>
+
+<p><img class="center" src="/images/2014-02-14_VS04.png" title="Startup (app)" ></p>
+
+<p>Now every time I start a new Visual Studio instance, I do that a lot during any normal work day, it loads clean and faster.</p>
+]]></content>
+  </entry>
+  
+</feed>
