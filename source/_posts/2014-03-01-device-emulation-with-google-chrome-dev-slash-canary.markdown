@@ -14,7 +14,7 @@ A simple Google search directed me right away for something I've already was awa
 
 * [Chrome Release Channels](http://www.chromium.org/getting-involved/dev-channel)
 
-After the sexy photo we'll get on how to install Chrome Canary build on Windows 8 and on Chrome Dev on Arch Linux.
+After the sexy photo we'll get on how to install Chrome Canary build on Windows 8 and Chrome Dev on Arch Linux.
 
 <!-- more -->
 
