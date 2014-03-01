@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web development | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-02-16T21:10:07+00:00</updated>
+  <updated>2014-03-01T13:30:42+00:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Device Emulation with Google Chrome Dev/Canary]]></title>
+    <link href="http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/"/>
+    <updated>2014-03-01T11:44:00+00:00</updated>
+    <id>http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary</id>
+    <content type="html"><![CDATA[<p>This week, after seeing a snapshot that my friend &lsquo;led&rsquo; posted on Facebook about some mobile tests for one of his projects, I&rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&hellip;. that is interesting.</p>
+
+<p>A simple Google search directed me right away for something I&rsquo;ve already was aware but with some new funky stuff:</p>
+
+<ul>
+<li><p>[Chrome DevTools, Mobile Emulation](<a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">https://developers.google.com/chrome-developer-tools/docs/mobile-emulation</a></p></li>
+<li><p><a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a></p></li>
+</ul>
+
+
+<p>After the sexy photo we&rsquo;ll get on how to install Chrome Canary build on Windows 8 and on Chrome Dev on Arch Linux.</p>
+
+<!-- more -->
+
+
+<h2>Nokia Lumia emulation in action</h2>
+
+<p>A simple example on Windows 8:</p>
+
+<p><img class="center" src="/images/2014-03-01_canary_on_windows.png" title="Nokia Lumia emulation" ></p>
+
+<h2>Installing Canary Build on Windows</h2>
+
+<p>Canary Build run side-by-side with your existing Chrome installation.</p>
+
+<h3>Using Chocolatey (can&rsquo;t get more sweet)</h3>
+
+<p>Google Chrome Canary is available through <a href="http://chocolatey.org/packages?q=canary">Chocolatey</a>, so simply install it using <code>cinst</code>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'>c:<span class="p">&gt;</span> <span class="n">cinst</span> GoogleChrome.Canary
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>If you using Windows and you don&rsquo;t know what <a href="http://chocolatey.org/">Chocolatey</a> is you are missing all the fun.</p>
+
+<h3>Regular Download</h3>
+
+<p>Simply <a href="https://www.google.com/intl/en/chrome/browser/canary.html">download</a> Chrome Canary run the installer.</p>
+
+<h2>Installing Chrome Dev on Arch Linux/linux</h2>
+
+<p>Chrome Dev run side-by-side with your existing Chromium installation.</p>
+
+<p>This is my distro of choice but for any other popular like Debian based get the packages from <a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a>.</p>
+
+<p><code>google-chrome-dev</code> is available through <a href="https://aur.archlinux.org/">AUR</a>, so simply install it using <a href="https://wiki.archlinux.org/index.php/yaourt">yaourt</a>:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yaourt -S google-chrome-dev
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h2>Enabling Emulation</h2>
+
+<p>Enable the emulation panel following simple <a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation#enable-emulation-panel">instructions</a>.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>On this mobile era a lot of new tools for assisting web developers are arising. Could be a real challenge making compliant web sites/apps across the most popular devices. Having access to a good amount of devices at the same time for pre-launch tests/QA that also is usually a challenge. New tools are always welcome.</p>
+
+<p>Thank you Google for continuing to give back cool tools for the comunity and thank you &lsquo;led&rsquo; for the &lsquo;tip&rsquo;.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Handling ASP.NET PostBacks with URL Rewriting]]></title>

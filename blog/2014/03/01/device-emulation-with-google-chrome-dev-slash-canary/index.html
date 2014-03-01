@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Improve Visual Studio 2013 performance - RuiOnWriting.NET</title>
+  <title>Device Emulation with Google Chrome Dev/Canary - RuiOnWriting.NET</title>
   <meta name="author" content="Rui Marques">
 
   
-  <meta name="description" content="We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra &hellip;">
-  <meta name="keywords" content="performance, visual studio 2013, tools, windows 8">
+  <meta name="description" content="This week, after seeing a snapshot that my friend &lsquo;led&rsquo; posted on Facebook about some mobile tests for one of his projects, I&rsquo;ve &hellip;">
+  <meta name="keywords" content="google chrome, tools, arch, windows 8, canary, dev, device emulation, chocolatey, linux">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/">
+  <link rel="canonical" href="http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Improve Visual Studio 2013 performance</h1>
+      <h1 class="entry-title">Device Emulation with Google Chrome Dev/Canary</h1>
     
     
       <p class="meta">
@@ -98,39 +98,75 @@
   
 
 
-<time datetime="2014-02-14T21:36:00+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
+<time datetime="2014-03-01T11:44:00+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&rsquo;t caused by an extension?</p>
+<div class="entry-content"><p>This week, after seeing a snapshot that my friend &lsquo;led&rsquo; posted on Facebook about some mobile tests for one of his projects, I&rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&hellip;. that is interesting.</p>
 
-<p>I&rsquo;ve tested turning of something I really don&rsquo;t need and the fact is that I&rsquo;ve noticed some improvements.<!-- more --></p>
+<p>A simple Google search directed me right away for something I&rsquo;ve already was aware but with some new funky stuff:</p>
 
-<h2>Change visual experience settings</h2>
+<ul>
+<li><p>[Chrome DevTools, Mobile Emulation](<a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">https://developers.google.com/chrome-developer-tools/docs/mobile-emulation</a></p></li>
+<li><p><a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a></p></li>
+</ul>
 
-<p>Go to <code>Tools &gt; Options</code>, in the default view of <code>Environment &gt; General</code>, there is an option, under <code>Visual experience</code> called <strong>Automatically adjust visual experience based on client performance</strong>.
-<img class="center" src="/images/2014-02-14_VS01.png" title="Visual experience (before)" ></p>
 
-<p>Turning this off will disable visual client visual experience and hardware graphics acceleration.</p>
+<p>After the sexy photo we&rsquo;ll get on how to install Chrome Canary build on Windows 8 and on Chrome Dev on Arch Linux.</p>
 
-<p><img class="center" src="/images/2014-02-14_VS02.png" title="Visual experience (after)" ></p>
+<!-- more -->
 
-<p>This will take effect after you restart Visual Studio.</p>
 
-<h2>Startup with an empty environment</h2>
+<h2>Nokia Lumia emulation in action</h2>
 
-<p>This is more a personal preference. I don&rsquo;t want to wait for the default environment to load with news, latest opened projects/solutions/files, etc. Latest projects and files are always available through the <code>File</code> menu options.</p>
+<p>A simple example on Windows 8:</p>
 
-<p><img class="center" src="/images/2014-02-14_VS03.png" title="Startup (before)" ></p>
+<p><img class="center" src="/images/2014-03-01_canary_on_windows.png" title="Nokia Lumia emulation" ></p>
 
-<p>Switch to empty environment and disable content download. It&rsquo;s strange to have content download enabled after switching to empty environment.</p>
+<h2>Installing Canary Build on Windows</h2>
 
-<p><img class="center" src="/images/2014-02-14_VS04.png" title="Startup (app)" ></p>
+<p>Canary Build run side-by-side with your existing Chrome installation.</p>
 
-<p>Now every time I start a new Visual Studio instance, I do that a lot during any normal work day, it loads clean and faster.</p>
+<h3>Using Chocolatey (can&rsquo;t get more sweet)</h3>
+
+<p>Google Chrome Canary is available through <a href="http://chocolatey.org/packages?q=canary">Chocolatey</a>, so simply install it using <code>cinst</code>.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'>c:\<span class="p">&gt;</span> <span class="n">cinst</span> GoogleChrome.Canary
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you using Windows and you don&rsquo;t know what <a href="http://chocolatey.org/">Chocolatey</a> is you are missing all the fun.</p>
+
+<h3>Regular Download</h3>
+
+<p>Simply <a href="https://www.google.com/intl/en/chrome/browser/canary.html">download</a> Chrome Canary run the installer.</p>
+
+<h2>Installing Chrome Dev on Arch Linux/linux</h2>
+
+<p>Chrome Dev run side-by-side with your existing Chromium installation.</p>
+
+<p>This is my distro of choice but for any other popular like Debian based get the packages from <a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a>.</p>
+
+<p><code>google-chrome-dev</code> is available through <a href="https://aur.archlinux.org/">AUR</a>, so simply install it using <a href="https://wiki.archlinux.org/index.php/yaourt">yaourt</a>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yaourt -S google-chrome-dev
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Enabling Emulation</h2>
+
+<p>Enable the emulation panel following simple <a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation#enable-emulation-panel">instructions</a>.</p>
+
+<h2>Final Thoughts</h2>
+
+<p>On this mobile era a lot of new tools for assisting web developers are arising. Could be a real challenge making compliant web sites/apps across the most popular devices. Having access to a good amount of devices at the same time for pre-launch tests/QA that also is usually a challenge. New tools are always welcome.</p>
+
+<p>Thank you Google for continuing to give back cool tools for the comunity and thank you &lsquo;led&rsquo; for the &lsquo;tip&rsquo;.</p>
 </div>
 
 
@@ -153,12 +189,12 @@
   
 
 
-<time datetime="2014-02-14T21:36:00+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
+<time datetime="2014-03-01T11:44:00+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/tools/'>Tools</a>, <a class='category' href='/blog/categories/visual-studio/'>Visual Studio</a>
+    <a class='category' href='/blog/categories/chrome/'>Chrome</a>, <a class='category' href='/blog/categories/tools/'>Tools</a>, <a class='category' href='/blog/categories/web-development/'>Web development</a>
   
 </span>
 
@@ -167,7 +203,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -180,10 +216,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/" title="Previous Post: Handling ASP.NET PostBacks with URL Rewriting">&laquo; Handling ASP.NET PostBacks with URL Rewriting</a>
+        <a class="basic-alignment left" href="/blog/2014/02/14/improve-visual-studio-2013-performance/" title="Previous Post: Improve Visual Studio 2013 performance">&laquo; Improve Visual Studio 2013 performance</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/" title="Next Post: Device Emulation with Google Chrome Dev/Canary">Device Emulation with Google Chrome Dev/Canary &raquo;</a>
       
     </p>
   </footer>
@@ -281,8 +315,8 @@ Copyright &copy; 2014 - Rui Marques -
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/';
-        var disqus_url = 'http://ruionwriting.net/blog/2014/02/14/improve-visual-studio-2013-performance/';
+        var disqus_identifier = 'http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/';
+        var disqus_url = 'http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/';
         var disqus_script = 'embed.js';
       
     (function () {
