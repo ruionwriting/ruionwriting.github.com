@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-03-03T11:01:06+00:00</updated>
+  <updated>2014-04-12T18:18:59+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -20,17 +20,15 @@
     <id>http://ruionwriting.net/blog/2013/09/21/try-something-new-octopress-motivation</id>
     <content type="html"><![CDATA[<p>Real blogging, like <a href="http://www.hanselman.com/blog/">Scott Hanselman</a> does (and many others), is a serious thing that requires discipline and a personal commitment. I’ve failed to do anything even close <em>(&lt;1%???)</em> of what Scott does concerning sharing with the community real stuff that teach and empower any developer skills.<!-- more --></p>
 
-<h2>I’m a failed blogger</h2>
+<h2 id="im-a-failed-blogger">I’m a failed blogger</h2>
+<p>I’ve a lot of excuses that sum up to NO TIME. What??? The truth is that I didn’t really enforce a discipline to blogging and the excuse about not having spare time and patience fitted just perfectly all this time. 3 years after my first blog post I have to try something new: a personal commitment to write something useful and clear with more regularity.</p>
 
-<p>I&rsquo;ve a lot of excuses that sum up to NO TIME. What??? The truth is that I didn&rsquo;t really enforce a discipline to blogging and the excuse about not having spare time and patience fitted just perfectly all this time. 3 years after my first blog post I have to try something new: a personal commitment to write something useful and clear with more regularity.</p>
+<h2 id="i-want-to-learn-more">I want to learn more</h2>
+<p>Blogging about findings/opinions (personal) related to my job daily challenges, problems and solutions is an opportunity to be a better programmer, person (yes, I work also with people) and ultimately a better professional. </p>
 
-<h2>I want to learn more</h2>
+<h2 id="why-octopress">Why Octopress?</h2>
+<p>Why not? I love <a href="http://git-scm.com/">git</a> and I want to learn new stuff so Octopress seems to be the perfect framework for it. Any Windows/.NET guy with some linux exposure will gain some extra skills in the process (empowers extra curiosity for Windows guts). Octopress it is, exiting confort zone…</p>
 
-<p>Blogging about findings/opinions (personal) related to my job daily challenges, problems and solutions is an opportunity to be a better programmer, person (yes, I work also with people) and ultimately a better professional.</p>
-
-<h2>Why Octopress?</h2>
-
-<p>Why not? I love <a href="http://git-scm.com/">git</a> and I want to learn new stuff so Octopress seems to be the perfect framework for it. Any Windows/.NET guy with some linux exposure will gain some extra skills in the process (empowers extra curiosity for Windows guts). Octopress it is, exiting confort zone&hellip;</p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web development | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-03-03T11:01:06+00:00</updated>
+  <updated>2014-04-12T18:18:59+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -18,48 +18,50 @@
     <link href="http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/"/>
     <updated>2014-03-01T11:44:00+00:00</updated>
     <id>http://ruionwriting.net/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary</id>
-    <content type="html"><![CDATA[<p>This week, after seeing a snapshot that my friend &lsquo;led&rsquo; posted on Facebook about some mobile tests for one of his projects, I&rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&hellip;. that is interesting.</p>
+    <content type="html"><![CDATA[<p>This week, after seeing a snapshot that my friend ‘led’ posted on Facebook about some mobile tests for one of his projects, I’ve noticed about a certain device emulation feature  on Chrome developer tools. Hum…. that is interesting.</p>
 
-<p>A simple Google search directed me right away for something I&rsquo;ve already was aware but with some new funky stuff:</p>
+<p>A simple Google search directed me right away for something I’ve already was aware but with some new funky stuff: </p>
 
 <ul>
-<li><p><a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">Chrome DevTools, Mobile Emulation</a></p></li>
-<li><p><a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a></p></li>
+  <li>
+    <p><a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">Chrome DevTools, Mobile Emulation</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a></p>
+  </li>
 </ul>
 
-
-<p>After the sexy photo we&rsquo;ll get on how to install Chrome Canary build on Windows 8 and Chrome Dev on Arch Linux.</p>
+<p>After the sexy photo we’ll get on how to install Chrome Canary build on Windows 8 and Chrome Dev on Arch Linux.</p>
 
 <!-- more -->
 
-
-<h2>Nokia Lumia emulation in action</h2>
+<h2 id="nokia-lumia-emulation-in-action">Nokia Lumia emulation in action</h2>
 
 <p>A simple example on Windows 8:</p>
 
 <p><img class="center" src="/images/2014-03-01_canary_on_windows.png" title="Nokia Lumia emulation" ></p>
 
-<h2>Installing Canary Build on Windows</h2>
+<h2 id="installing-canary-build-on-windows">Installing Canary Build on Windows</h2>
 
-<p>Canary Build run side-by-side with your existing Chrome installation.</p>
+<p>Canary Build run side-by-side with your existing Chrome installation. </p>
 
-<h3>Using Chocolatey (can&rsquo;t get more sweet)</h3>
+<h3 id="using-chocolatey-cant-get-more-sweet">Using Chocolatey (can’t get more sweet)</h3>
 
 <p>Google Chrome Canary is available through <a href="http://chocolatey.org/packages?q=canary">Chocolatey</a>, so simply install it using <code>cinst</code>.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'>c:<span class="p">&gt;</span> <span class="n">cinst</span> GoogleChrome.Canary
+</pre></td><td class='code'><pre><code class='bat'><span class='line'>c:&amp;gt; cinst GoogleChrome.Canary
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>If you using Windows and you don&rsquo;t know what <a href="http://chocolatey.org/">Chocolatey</a> is you are missing all the fun.</p>
+<p>If you using Windows and you don’t know what <a href="http://chocolatey.org/">Chocolatey</a> is you are missing all the fun.</p>
 
-<h3>Regular Download</h3>
+<h3 id="regular-download">Regular Download</h3>
 
 <p>Simply <a href="https://www.google.com/intl/en/chrome/browser/canary.html">download</a> Chrome Canary run the installer.</p>
 
-<h2>Installing Chrome Dev on Arch Linux/linux</h2>
+<h2 id="installing-chrome-dev-on-arch-linuxlinux">Installing Chrome Dev on Arch Linux/linux</h2>
 
-<p>Chrome Dev run side-by-side with your existing Chromium installation.</p>
+<p>Chrome Dev run side-by-side with your existing Chromium installation. </p>
 
 <p>This is my distro of choice but for any other popular like Debian based get the packages from <a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a>.</p>
 
@@ -69,15 +71,15 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>yaourt -S google-chrome-dev
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<h2>Enabling Emulation</h2>
+<h2 id="enabling-emulation">Enabling Emulation</h2>
 
 <p>Enable the emulation panel following simple <a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation#enable-emulation-panel">instructions</a>.</p>
 
-<h2>Final Thoughts</h2>
+<h2 id="final-thoughts">Final Thoughts</h2>
 
-<p>On this mobile era a lot of new tools for assisting web developers are arising. Could be a real challenge making compliant web sites/apps across the most popular devices. Having access to a good amount of devices at the same time for pre-launch tests/QA that also is usually a challenge. New tools are always welcome.</p>
+<p>On this mobile era a lot of new tools for assisting web developers are arising. Could be a real challenge making compliant web sites/apps across the most popular devices. Having access to a good amount of devices at the same time for pre-launch tests/QA that also is usually a challenge. New tools are always welcome. </p>
 
-<p>Thank you Google for continuing to give back cool tools for the comunity and thank you &lsquo;led&rsquo; for the &lsquo;tip&rsquo;.</p>
+<p>Thank you Google for continuing to give back cool tools for the comunity and thank you ‘led’ for the ‘tip’.</p>
 ]]></content>
   </entry>
   
@@ -86,12 +88,11 @@
     <link href="http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/"/>
     <updated>2013-10-01T22:18:00+01:00</updated>
     <id>http://ruionwriting.net/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting</id>
-    <content type="html"><![CDATA[<p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed&hellip;</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu&rsquo;s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.<!-- more --></p>
+    <content type="html"><![CDATA[<p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed…</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu’s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.<!-- more --></p>
 
-<p>A few minutes after I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with <a href="http://iirf.codeplex.com/">IIRF</a> (it was a requirement). The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu&rsquo;s. Since my language of choice is C# I’m going to share the solution right here:</p>
+<p>A few minutes after I’ve remembered that I had to strugle with this issue when implementing a website using url-rewriting with <a href="http://iirf.codeplex.com/">IIRF</a> (it was a requirement). The problem is that when using url-rewriting the <code>&lt;form&gt;</code> control does not render the proper url but the re-written one. The solution is to write a form control adapter and I found, at the time I had the problem, the right solution from ScottGu’s. Since my language of choice is C# I’m going to share the solution right here:</p>
 
-<h2>Step 1</h2>
-
+<h2 id="step-1">Step 1</h2>
 <p><strong>Create a FormRewriterControlAdapter class</strong></p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>FormRewriterControlAdapter.cs </span></figcaption>
@@ -156,13 +157,6 @@
 <span class='line-number'>59</span>
 <span class='line-number'>60</span>
 <span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
 </pre></td><td class='code'><pre><code class='csharp'><span class='line'><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 </span><span class='line'><span class="k">using</span> <span class="nn">System.Data</span><span class="p">;</span>
 </span><span class='line'><span class="k">using</span> <span class="nn">System.Configuration</span><span class="p">;</span>
@@ -176,25 +170,21 @@
 </span><span class='line'><span class="k">using</span> <span class="nn">System.Xml.Linq</span><span class="p">;&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">class</span> <span class="nc">FormRewriterControlAdapter</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Web</span><span class="p">.</span><span class="n">UI</span><span class="p">.</span><span class="n">Adapters</span><span class="p">.</span><span class="n">ControlAdapter</span>
-</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="n">Render</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">Render</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">writer</span><span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
+</span><span class='line'>    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Render</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">base</span><span class="p">.</span><span class="n">Render</span><span class="p">(</span><span class="k">new</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">writer</span><span class="p">));</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;</span><span class="k">public</span> <span class="k">class</span> <span class="nc">RewriteFormHtmlTextWriter</span> <span class="p">:</span> <span class="n">HtmlTextWriter</span>
-</span><span class='line'><span class="p">{&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">public</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">.</span><span class="n">InnerWriter</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'>    <span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">HtmlTextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">.</span><span class="n">InnerWriter</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}&lt;/</span><span class="n">p</span><span class="p">&gt;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">public</span> <span class="nf">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">TextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span> <span class="p">(</span><span class="n">writer</span><span class="p">)</span>
+</span><span class='line'><span class="p">&lt;</span><span class="n">pre</span><span class="p">&gt;&lt;</span><span class="n">code</span><span class="p">&gt;</span><span class="k">public</span> <span class="n">RewriteFormHtmlTextWriter</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">TextWriter</span> <span class="n">writer</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span> <span class="p">(</span><span class="n">writer</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">InnerWriter</span> <span class="p">=</span> <span class="n">writer</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
@@ -227,21 +217,17 @@
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">base</span><span class="p">.</span><span class="n">WriteAttribute</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">value</span><span class="p">,</span> <span class="n">fEncode</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="p">&lt;/</span><span class="n">code</span><span class="p">&gt;&lt;/</span><span class="n">pre</span><span class="p">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">&lt;</span><span class="n">p</span><span class="p">&gt;}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span><span class='line'><span class="p">}</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+</code></pre>
 
-<h2>Step 2</h2>
-
+<h2 id="step-2">Step 2</h2>
 <p><strong>Add adapter to App_Browsers</strong></p>
 
 <ol>
-<li>Add <code>ASP.NET</code> folder if it does not exists;</li>
-<li>Create <code>Form.browser</code>:</li>
+  <li>Add <code>ASP.NET</code> folder if it does not exists;</li>
+  <li>Create <code>Form.browser</code>:</li>
 </ol>
-
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Form.browser </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -253,19 +239,15 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;browsers&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span><span class="ni">&amp;lt;</span>browser refID=&quot;Default&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'>    <span class="ni">&amp;lt;</span>controlAdapters<span class="ni">&amp;gt;</span>
-</span><span class='line'>        <span class="ni">&amp;lt;</span>adapter controlType=&quot;System.Web.UI.HtmlControls.HtmlForm&quot;
-</span><span class='line'>            adapterType=&quot;FormRewriterControlAdapter&quot; /<span class="ni">&amp;gt;</span>
-</span><span class='line'>    <span class="ni">&amp;lt;</span>/controlAdapters<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>/browser<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;/browsers&gt;</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;browsers&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;browser</span> <span class="na">refid=</span><span class="s">&quot;Default&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;controladapters&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;adapter</span> <span class="na">controltype=</span><span class="s">&quot;System.Web.UI.HtmlControls.HtmlForm&quot;</span> <span class="na">adaptertype=</span><span class="s">&quot;FormRewriterControlAdapter&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/controladapters&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/browser&gt;</span>
+</span><span class='line'><span class="nt">&lt;/browsers&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>I hope you’ll find this information useful.</p>
@@ -277,20 +259,17 @@
     <link href="http://ruionwriting.net/blog/2013/09/24/the-best-web-application-framework-utopia/"/>
     <updated>2013-09-24T20:42:00+01:00</updated>
     <id>http://ruionwriting.net/blog/2013/09/24/the-best-web-application-framework-utopia</id>
-    <content type="html"><![CDATA[<p>Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&hellip; Ok! Not really :P<!-- more --></p>
+    <content type="html"><![CDATA[<p>Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle… Ok! Not really :P<!-- more --></p>
 
 <p>The truth is that, most of the time, is hard to move away without throwing our own perspective. I did that the past and I admit that I was a bit fundamentalist defending my own perspective.</p>
 
-<h2>Discussions like &ldquo;what is best PHP or ASP.NET?&rdquo; are as common as useless.</h2>
-
+<h2 id="discussions-like-what-is-best-php-or-aspnet-are-as-common-as-useless">Discussions like “what is best PHP or ASP.NET?” are as common as useless.</h2>
 <p>The more I learn the more I say that all technologies, in this case web frameworks, have pro’s and conn’s and that we must choose the best having the focus on the task and on the result we want to achieve.</p>
 
-<h2>For me ASP.NET is the best (continue reading please)</h2>
-
+<h2 id="for-me-aspnet-is-the-best-continue-reading-please">For me ASP.NET is the best (continue reading please)</h2>
 <p>Naturally because is the one I use every day. I’ve already tried others like Java or PHP but I really like the way we can develop everything using a great IDE like Visual Studio and all the nice features that .NET ecosystem (web, desktop, services, etc) delivers. I love C# and with .NET I can do almost everything, core and services, with it.</p>
 
-<h2>So what is the best one?</h2>
-
+<h2 id="so-what-is-the-best-one">So what is the best one?</h2>
 <p>The are so many of them, use the one that serves you better. The most used (Perl, PHP, Java, Python, Ruby, CFML, ASP, ASP.NET, etc) have great projects and platforms well known by everyone, so if a great project is using a certain technology and it works the way it is suppose to then is using the right technology, not necessarily the best but certainly the one that performs the job.</p>
 
 <p>A simple equation:</p>
