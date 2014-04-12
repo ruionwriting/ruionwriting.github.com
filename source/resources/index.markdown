@@ -6,14 +6,10 @@ comments: true
 sharing: true
 footer: false
 ---
+This page is an attempt to keep an organized list of resources than actually I use on my regular developer daily life. Stuff that I receive and share among my pears.
+
 * a random unordered list with only one item
 {:toc}
-
-## Why?
-
-Regularly I receive requests from friends asking if I can recommend any specific resource about a specific topic, I know Google knows everything, and I try my best to share what I have in my personal notes. I tend to do the same and I usually receive precious links to great resources.
-
-This page is an attempt to keep an organized list of resources than actually I use on my regular developer daily life. Stuff that I receive and share among my pears.
 
 ## Coding and tutorials
 
