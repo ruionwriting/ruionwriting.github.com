@@ -10,7 +10,7 @@ This week, after seeing a snapshot that my friend 'led' posted on Facebook about
 
 A simple Google search directed me right away for something I've already was aware but with some new funky stuff: 
 
-* [Chrome DevTools, Mobile Emulation](https://developers.google.com/chrome-developer-tools/docs/mobile-emulatio)
+* [Chrome DevTools, Mobile Emulation](https://developers.google.com/chrome-developer-tools/docs/mobile-emulation)
 
 * [Chrome Release Channels](http://www.chromium.org/getting-involved/dev-channel)
 
