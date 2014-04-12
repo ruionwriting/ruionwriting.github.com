@@ -1,0 +1,64 @@
+---
+layout: page
+title: "Resources"
+date: 2014-04-12 13:34
+comments: true
+sharing: true
+footer: false
+---
+* a random unordered list with only one item
+{:toc}
+
+## Why?
+
+Regularly I receive requests from friends asking if I can recommend any specific resource about a specific topic, I know Google knows everything, and I try my best to share what I have in my personal notes. I tend to do the same and I usually receive precious links to great resources.
+
+This page is an attempt to keep an organized list of resources than actually I use on my regular developer daily life. Stuff that I receive and share among my pears.
+
+## Coding and tutorials
+
+This is an extension of the previous section that is focused on complete courses (free/paid).
+
+### ASP.NET
+
+[ASP.NET](http://www.asp.net/) official website. Offers fresh announcements and a lot of free resources for all ASP.NET flavours.
+
+### CSharp
+
+[c# tube](http://csharptube.com/) is very nice website that lists a huge set of links to videos related with C# development. MVC, async, bdd, etc.
+
+### HTML/CSS/SVG
+
+[Can I use](http://caniuse.com/) offers compatibility tables for support of HTML5, CSS3, SVG and more in desktop and mobile browsers.
+
+[HTML5 ROCKS](http://www.html5rocks.com/). Simply it rocks!
+
+
+### Javascript :: Knockout
+
+[Knockout](http://knockoutjs.com/) is currently my javascript MVVM framework of choice.
+
+## Online courses
+
+### code school
+
+[code school](https://www.codeschool.com/) offers (registration is free) a very interesting set of courses grouped by "paths": Ruby, Javascript, HTML/CSS and IOS.
+
+Also included is a screencasts section that includes a good amount of free to watch ones. 
+
+### Pluralsight
+
+[Pluralsight](http://www.pluralsight.com/) is mine main learning resource since mid 2013. 100% video based.
+
+Paid service, you can have a trial, that contains high quality learning materials. Also Pluralsight acquired several other companies like (DigitalTutors.com)[http://www.pluralsight.com/training/DigitalTutors] making available for subscribers like me thousands of courses without any extra free.
+
+### Microsoft Virtual Academy
+
+[MVA](http://www.microsoftvirtualacademy.com/) offers a full range of free courses that covers almost everything related all MS products. Excellent set of resources for developers is part of the current offer.
+
+## Q&A
+
+### For programmers
+
+[stackoverflow](http://stackoverflow.com/) for me is the best question and answer site there is.
+
