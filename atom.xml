@@ -4,7 +4,7 @@
   <title><![CDATA[RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-04-12T19:28:00+01:00</updated>
+  <updated>2014-04-12T22:14:53+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -12,6 +12,411 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SQL Server: (re)import CSV data the easy way]]></title>
+    <link href="http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/"/>
+    <updated>2014-04-12T19:31:00+01:00</updated>
+    <id>http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way</id>
+    <content type="html"><![CDATA[<p>Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
+
+<p><a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">BULK INSERT (Transact-SQL)</a> is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I’m going to build a simple script using this nice feature.
+<!--more--></p>
+
+<p>For this example I have a simple CSV file containing a set of data from a fictional marketing contacts database.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Example CSV source </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">Id;Name;EmailAddress;MobileNumber
+</span><span class="line">1;John;john@gmail.com;123456789
+</span><span class="line">2;Mary;mary@gmail.com;123456789
+</span><span class="line">...</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In order to use BULK INSERT I need the target table structure to have the same structure as the source data. Not always this would be the case so I’m going to create a temporary table to hold my source data that will be retrieved from the BULK INSERT.</p>
+
+<p><strong>Creating the temporary table:</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Temporary table to hold CSV data </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span> <span class="p">(</span>
+</span><span class="line">    <span class="n">Id</span> <span class="nb">int</span><span class="p">,</span>
+</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+</span><span class="line">    <span class="n">EmailAddress</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span><span class="p">,</span>
+</span><span class="line">    <span class="n">MobileNumber</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span>
+</span><span class="line"><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This temporary table columns definitions should reflect the source structure and columns types.</p>
+
+<p>Now that I have a temporary table that can receive the source data from the CSV.</p>
+
+<p><strong>Building the BULK INSERT script:</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>BULK INSERT </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">BULK</span> <span class="k">INSERT</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
+</span><span class="line"><span class="k">FROM</span> <span class="s1">&#39;C:\csv_file_full_path\source_table_data.csv&#39;</span>
+</span><span class="line"><span class="k">WITH</span>
+</span><span class="line"><span class="p">(</span>
+</span><span class="line">    <span class="n">FIRSTROW</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="n">FIELDTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="n">ROWTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;\n&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="n">CODEPAGE</span> <span class="o">=</span> <span class="s1">&#39;ACP&#39;</span>
+</span><span class="line"><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’m just applying a short set of the <a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">available arguments</a>. Based on your data source apply the necessary arguments.</p>
+
+<p>This is a very powerful tool. Just for the example, is possible to have a source data file from a UNC share, take control over encoding, etc.</p>
+
+<p>Now that I have a temporary table containing the imported data I can insert it to my target table applying some extra import rules and tweaks.</p>
+
+<p><strong>Building the insert script for the target table:</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Insert data to target table  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Target_Table_Name</span><span class="p">]</span>
+</span><span class="line">   <span class="p">([</span><span class="n">Name</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">EmailAddress</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">Password</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">LastKnownIPAddress</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">CreatedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">ChangedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">VerifiedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">Blocked</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">BlockEmailMarketing</span><span class="p">])</span>
+</span><span class="line"><span class="k">SELECT</span>
+</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
+</span><span class="line">    <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
+</span><span class="line">    <span class="p">,(</span>
+</span><span class="line">        <span class="k">CASE</span>
+</span><span class="line">            <span class="k">WHEN</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NULL</span>
+</span><span class="line">                <span class="k">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">varchar</span><span class="p">,</span> <span class="p">[</span><span class="n">Id</span><span class="p">]),</span> <span class="s1">&#39;@example.com&#39;</span><span class="p">)</span>
+</span><span class="line">            <span class="k">ELSE</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
+</span><span class="line">        <span class="k">END</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,(</span><span class="k">SELECT</span> <span class="n">GETDATE</span><span class="p">())</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
+</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
+</span><span class="line"><span class="k">FROM</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
+</span><span class="line"><span class="c1">-- apply any addional filtering/sorting as needed</span>
+</span><span class="line"><span class="c1">-- WHERE [Id] IS NOT NULL</span>
+</span><span class="line"><span class="c1">-- ORDER BY EmailAddress</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This example shows that is quite easy to apply some data transformations to the source data before inserting it on my target table. All the power of Transact-SQL is available to make a serious import script using this strategy.</p>
+
+<p><strong>Also I want to add to my import script some extra features:</strong></p>
+
+<ul>
+  <li>perform all my operations wrapped within a transaction;</li>
+  <li>sanitize data before import (useful I want to test the import multiple times);</li>
+  <li>demonstrate that is easy to import multiple files in one run.</li>
+</ul>
+
+<p><strong>Here the full script:</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Complete script with comments  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+<span class="line-number">98</span>
+<span class="line-number">99</span>
+<span class="line-number">100</span>
+<span class="line-number">101</span>
+<span class="line-number">102</span>
+<span class="line-number">103</span>
+<span class="line-number">104</span>
+<span class="line-number">105</span>
+<span class="line-number">106</span>
+<span class="line-number">107</span>
+<span class="line-number">108</span>
+<span class="line-number">109</span>
+<span class="line-number">110</span>
+<span class="line-number">111</span>
+<span class="line-number">112</span>
+<span class="line-number">113</span>
+<span class="line-number">114</span>
+<span class="line-number">115</span>
+<span class="line-number">116</span>
+<span class="line-number">117</span>
+<span class="line-number">118</span>
+<span class="line-number">119</span>
+<span class="line-number">120</span>
+<span class="line-number">121</span>
+<span class="line-number">122</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="cm">/* </span>
+</span><span class="line"><span class="cm">    set target database</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="n">USE</span> <span class="p">[</span><span class="n">Target_Database_Name</span><span class="p">]</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/* </span>
+</span><span class="line"><span class="cm">    wrap everything in a transaction </span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="k">BEGIN</span> <span class="n">TRAN</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/* </span>
+</span><span class="line"><span class="cm">    (optional) sanitize target table(s)</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- remove all rows</span>
+</span><span class="line"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Target_Table_Name</span><span class="p">];</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- if your the target table contains a identity key, reset its value</span>
+</span><span class="line"><span class="n">DBCC</span> <span class="n">CHECKIDENT</span> <span class="p">([</span><span class="n">Target_Table_Name</span><span class="p">],</span> <span class="n">reseed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- extra sanitization operations like disabling triggers, FK&#39;s, etc</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/*</span>
+</span><span class="line"><span class="cm">    creat a temp table, for each CSV that you wish to import, to hold CSV data</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">    example CSV:</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">    Id;Name;EmailAddress;MobileNumber</span>
+</span><span class="line"><span class="cm">    1;John;john@gmail.com;123456789</span>
+</span><span class="line"><span class="cm">    2;Mary;mary@gmail.com;123456789</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">    table structure and column types must match with the CSV</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span> <span class="p">(</span>
+</span><span class="line">    <span class="n">Id</span> <span class="nb">int</span><span class="p">,</span>
+</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
+</span><span class="line">    <span class="n">EmailAddress</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span><span class="p">,</span>
+</span><span class="line">    <span class="n">MobileNumber</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span>
+</span><span class="line"><span class="p">);</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/*</span>
+</span><span class="line"><span class="cm">    import CSV data to the temp table</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="n">BULK</span> <span class="k">INSERT</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
+</span><span class="line"><span class="k">FROM</span> <span class="s1">&#39;C:\csv_file_full_path\source_table_data.csv&#39;</span>
+</span><span class="line"><span class="k">WITH</span>
+</span><span class="line"><span class="p">(</span>
+</span><span class="line">    <span class="n">FIRSTROW</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="line">    <span class="n">FIELDTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="n">ROWTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;\n&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="n">CODEPAGE</span> <span class="o">=</span> <span class="s1">&#39;ACP&#39;</span>
+</span><span class="line"><span class="p">);</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/*</span>
+</span><span class="line"><span class="cm">    insert data to the target table using temp table as the source</span>
+</span><span class="line"><span class="cm">    apply as many rules as needed to transform imput data</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Target_Table_Name</span><span class="p">]</span>
+</span><span class="line">   <span class="p">([</span><span class="n">Name</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">EmailAddress</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">Password</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">LastKnownIPAddress</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">CreatedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">ChangedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">VerifiedOn</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">Blocked</span><span class="p">]</span>
+</span><span class="line">   <span class="p">,[</span><span class="n">BlockEmailMarketing</span><span class="p">])</span>
+</span><span class="line"><span class="k">SELECT</span>
+</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
+</span><span class="line">    <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
+</span><span class="line">    <span class="p">,(</span>
+</span><span class="line">        <span class="k">CASE</span>
+</span><span class="line">            <span class="k">WHEN</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NULL</span>
+</span><span class="line">                <span class="k">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">varchar</span><span class="p">,</span> <span class="p">[</span><span class="n">Id</span><span class="p">]),</span> <span class="s1">&#39;@example.com&#39;</span><span class="p">)</span>
+</span><span class="line">            <span class="k">ELSE</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
+</span><span class="line">        <span class="k">END</span>
+</span><span class="line">    <span class="p">)</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,(</span><span class="k">SELECT</span> <span class="n">GETDATE</span><span class="p">())</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
+</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
+</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
+</span><span class="line"><span class="k">FROM</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
+</span><span class="line"><span class="c1">-- apply any addional filtering/sorting as needed</span>
+</span><span class="line"><span class="c1">-- WHERE [Id] IS NOT NULL</span>
+</span><span class="line"><span class="c1">-- ORDER BY EmailAddress</span>
+</span><span class="line">
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/*</span>
+</span><span class="line"><span class="cm">    drop temp table(s)</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span><span class="p">;</span>
+</span><span class="line"><span class="k">GO</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/* </span>
+</span><span class="line"><span class="cm">    extra operations</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">-- enable triggers, FK&#39;s, etc</span>
+</span><span class="line">
+</span><span class="line"><span class="cm">/*</span>
+</span><span class="line"><span class="cm">    all good, time to commit transaction</span>
+</span><span class="line"><span class="cm">*/</span>
+</span><span class="line">
+</span><span class="line"><span class="k">COMMIT</span> <span class="n">TRAN</span>
+</span><span class="line"><span class="k">GO</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Device Emulation with Google Chrome Dev/Canary]]></title>

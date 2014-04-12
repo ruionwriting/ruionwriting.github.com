@@ -9,7 +9,7 @@
   <meta name="author" content="Rui Marques">
 
   
-  <meta name="description" content="This week, after seeing a snapshot that my friend ‘led’ posted on Facebook about some mobile tests for one of his projects, I’ve noticed about a &hellip;">
+  <meta name="description" content="Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-12T19:31:00+01:00" pubdate data-updated="true">Apr 12<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
+
+<p><a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">BULK INSERT (Transact-SQL)</a> is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I’m going to build a simple script using this nice feature.
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -176,45 +218,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Handling ASP.NET PostBacks with URL Rewriting</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-01T22:18:00+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed…</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly. This is a C# port based on ScottGu’s <a href="http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx">solution</a>.</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -234,6 +237,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a>
       </li>
     
@@ -249,10 +256,6 @@
         <a href="/blog/2013/09/24/the-best-web-application-framework-utopia/">The best web application framework utopia</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/09/21/try-something-new-octopress-motivation/">Try something new: Octopress motivation</a>
-      </li>
-    
   </ul>
 </section>
 <section>
@@ -262,8 +265,10 @@
 <li class='category'><a href='/blog/categories/blogging/'>Blogging (1)</a></li>
 <li class='category'><a href='/blog/categories/csharp/'>CSharp (1)</a></li>
 <li class='category'><a href='/blog/categories/chrome/'>Chrome (1)</a></li>
+<li class='category'><a href='/blog/categories/databases/'>Databases (1)</a></li>
 <li class='category'><a href='/blog/categories/frameworks/'>Frameworks (1)</a></li>
 <li class='category'><a href='/blog/categories/iis/'>IIS (1)</a></li>
+<li class='category'><a href='/blog/categories/ms-sql/'>MS SQL (1)</a></li>
 <li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
 <li class='category'><a href='/blog/categories/tools/'>Tools (2)</a></li>
 <li class='category'><a href='/blog/categories/visual-studio/'>Visual Studio (1)</a></li>
