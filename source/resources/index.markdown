@@ -29,10 +29,18 @@ This is an extension of the previous section that is focused on complete courses
 
 [HTML5 ROCKS](http://www.html5rocks.com/). Simply it rocks!
 
+### Javascript :: Fabric.js
 
-### Javascript :: Knockout
+[Frabric.js](http://fabricjs.com/) is a powerful and simple
+Javascript HTML5 canvas library.
 
-[Knockout](http://knockoutjs.com/) is currently my javascript MVVM framework of choice.
+### Javascript :: KineticJS
+
+[KineticJS](http://kineticjs.com/) is an HTML5 Canvas JavaScript framework that enables high performance animations, transitions, node nesting, layering, filtering, caching, event handling for desktop and mobile applications, and much more.
+
+### Javascript :: KnockoutJS
+
+[KnockoutJS](http://knockoutjs.com/) is currently my javascript MVVM framework of choice.
 
 ## Online courses
 
