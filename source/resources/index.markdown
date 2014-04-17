@@ -42,6 +42,8 @@ Javascript HTML5 canvas library.
 
 [KnockoutJS](http://knockoutjs.com/) is currently my javascript MVVM framework of choice.
 
+[knockmeout.net](http://www.knockmeout.net/) is a serious blog from [Ryan Niemeyer](https://github.com/rniemeyer) focused on KnockoutJS that contains precious posts like [10 Things to Know About KnockoutJS on Day One](http://www.knockmeout.net/2011/06/10-things-to-know-about-knockoutjs-on.html).
+
 ## Online courses
 
 ### code school
