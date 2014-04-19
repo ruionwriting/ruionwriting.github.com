@@ -23,6 +23,10 @@ This is an extension of the previous section that is focused on complete courses
 
 [c# tube](http://csharptube.com/) is very nice website that lists a huge set of links to videos related with C# development. MVC, async, bdd, etc.
 
+#### IoC
+
+[IoC Container Benchmark - Performance comparison](http://www.palmmedia.de/blog/2011/8/30/ioc-container-benchmark-performance-comparison). This is one of the most complete articles/benchmark (with [source](https://github.com/danielpalme/IocPerformance)) that I know about IoC containers. Impressively updated by the author since September, 2011. Thank you [Daniel](http://www.palmmedia.de/).
+
 ### HTML/CSS/SVG
 
 [Can I use](http://caniuse.com/) offers compatibility tables for support of HTML5, CSS3, SVG and more in desktop and mobile browsers.
