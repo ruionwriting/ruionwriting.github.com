@@ -54,7 +54,11 @@ Javascript HTML5 canvas library.
 
 [code school](https://www.codeschool.com/) offers (registration is free) a very interesting set of courses grouped by "paths": Ruby, Javascript, HTML/CSS and IOS.
 
-Also included is a screencasts section that includes a good amount of free to watch ones. 
+Also included is a screencasts section that includes a good amount of free to watch ones.
+
+### LearnVisualStudio.NET
+
+[LearnVisualStudio.NET](http://www.learnvisualstudio.net/) is a low-cost (5$ per month) learning training videos library. Contains also a good amount of [free courses](http://www.learnvisualstudio.net/free/).
 
 ### Pluralsight
 
