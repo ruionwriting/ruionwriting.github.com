@@ -6,9 +6,9 @@ comments: true
 categories: [Databases, MS SQL]
 keywords: "ms sql, sql server, databases"
 ---
-Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I'm not a DBA and this may not be the most optimal solution. Worked without damage and gived the expected results.)
+Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I'm not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.
 
-In the last 3 years SQL Server has been around on my regular developer life but not with to much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.
+In the last 3 years SQL Server has been around on my regular developer life but not with too much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.
 <!--more-->
 
 ## Problem
