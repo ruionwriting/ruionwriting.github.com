@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MS SQL | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/ms-sql/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-04-21T22:08:54+01:00</updated>
+  <updated>2014-04-21T22:23:32+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -18,9 +18,9 @@
     <link href="http://ruionwriting.net/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/"/>
     <updated>2014-04-21T21:23:00+01:00</updated>
     <id>http://ruionwriting.net/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data</id>
-    <content type="html"><![CDATA[<p>Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I’m not a DBA and this may not be the most optimal solution. Worked without damage and gived the expected results.)</p>
+    <content type="html"><![CDATA[<p>Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I’m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.</p>
 
-<p>In the last 3 years SQL Server has been around on my regular developer life but not with to much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.
+<p>In the last 3 years SQL Server has been around on my regular developer life but not with too much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.
 <!--more--></p>
 
 <h2 id="problem">Problem</h2>
