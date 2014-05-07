@@ -36,7 +36,7 @@
         <loc>
             http://ruionwriting.net/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/
         </loc>
-        <lastmod>2014-04-21T22:22:51+01:00</lastmod>
+        <lastmod>2014-05-07T13:33:51+01:00</lastmod>
     </url>
     <url>
         <loc>http://ruionwriting.net/robots.txt</loc>
@@ -52,7 +52,7 @@
     </url>
     <url>
         <loc>http://ruionwriting.net/blog/archives/</loc>
-        <lastmod>2014-04-21T22:22:51+01:00</lastmod>
+        <lastmod>2014-05-07T13:33:51+01:00</lastmod>
     </url>
     <url>
         <loc>http://ruionwriting.net/resources/</loc>
@@ -60,6 +60,6 @@
     </url>
     <url>
         <loc>http://ruionwriting.net/</loc>
-        <lastmod>2014-04-21T22:22:51+01:00</lastmod>
+        <lastmod>2014-05-07T13:33:51+01:00</lastmod>
     </url>
 </urlset>
