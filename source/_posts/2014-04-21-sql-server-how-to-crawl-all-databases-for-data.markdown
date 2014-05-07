@@ -13,8 +13,8 @@ In the last 3 years SQL Server has been around on my regular developer life but 
 
 ## Problem
 
-- I want to search dozens of database on a specific server;
-- I need to search for a string in a predefined and limited number of potential column names. Why limit? Because string search with _LIKE_ is an expensive operation. In my scenario I was dealing with big databases (both in therms of data and number of table objects).
+- I want to search across dozens of database on a specific server;
+- I need to search for a string in a predefined and limited number of potential column names. Why limited? Because string search with _LIKE_ is an expensive operation. In my scenario I was dealing with big databases (both in therms of data and number of table objects).
 
 ## Plan
 
