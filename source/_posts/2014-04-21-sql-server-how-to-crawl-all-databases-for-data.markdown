@@ -19,16 +19,16 @@ In the last 3 years SQL Server has been around on my regular developer life but 
 ## Plan
 
 - Get a list of databases with the possibility of excluding some system databases;
-- For each database get a list of tables;
+- For each database get a list of all user tables;
 - Get the list of columns for each table, with the potential column name;
-- Apply a search of each of the found columns;
-- Output the database, the table and the column name for every match.
+- Apply a search of each found columns;
+- Output the database, table and column names for every match.
 
 Sound simple...
 
 ## Solution
 
-{% codeblock lang:sql Temporary table to hold CSV data %}
+{% codeblock lang:sql Full script %}
 -- selecting master database
 USE master
 GO
