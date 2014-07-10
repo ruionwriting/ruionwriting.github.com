@@ -4,7 +4,7 @@
   <title><![CDATA[RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-07-10T18:07:14+01:00</updated>
+  <updated>2014-07-10T18:24:14+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -27,7 +27,7 @@
 
 <ul>
   <li>I want to search across dozens of database on a specific server;</li>
-  <li>I need to search for a string in a predefined and limited number of potential column names. Why limited? Because string search with <em>LIKE</em> is an expensive operation. In my scenario I was dealing with big databases (both in therms of data and number of table objects).</li>
+  <li>I need to search for a string in a predefined and limited number of potential column names. Why limited? Because string search with <em>LIKE</em> is an expensive operation. In my scenario I was dealing with big databases (both in terms of data and number of table objects).</li>
 </ul>
 
 <h2 id="plan">Plan</h2>
