@@ -4,7 +4,7 @@
   <title><![CDATA[Category: MS SQL | RuiOnWriting.NET]]></title>
   <link href="http://ruionwriting.net/blog/categories/ms-sql/atom.xml" rel="self"/>
   <link href="http://ruionwriting.net/"/>
-  <updated>2014-05-09T00:14:46+01:00</updated>
+  <updated>2014-07-10T18:05:53+01:00</updated>
   <id>http://ruionwriting.net/</id>
   <author>
     <name><![CDATA[Rui Marques]]></name>
@@ -34,17 +34,17 @@
 
 <ul>
   <li>Get a list of databases with the possibility of excluding some system databases;</li>
-  <li>For each database get a list of tables;</li>
+  <li>For each database get a list of all user tables;</li>
   <li>Get the list of columns for each table, with the potential column name;</li>
-  <li>Apply a search of each of the found columns;</li>
-  <li>Output the database, the table and the column name for every match.</li>
+  <li>Apply a search of each found columns;</li>
+  <li>Output the database, table and column names for every match.</li>
 </ul>
 
 <p>Sound simple…</p>
 
 <h2 id="solution">Solution</h2>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Temporary table to hold CSV data </span></figcaption>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Full script </span></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
