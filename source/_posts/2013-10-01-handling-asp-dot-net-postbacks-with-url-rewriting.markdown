@@ -3,7 +3,7 @@ layout: post
 title: "Handling ASP.NET PostBacks with URL Rewriting"
 date: 2013-10-01 22:18
 comments: true
-categories: [ASP.NET, C#, Web development, IIS]
+categories: [ASP.NET, CSharp, Web development, IIS]
 keywords: "asp.net, C#, web, url rewriting, IIRF"
 ---
 Recently a collegue develop crossed with this strange error **_Validation of viewstate MAC failed..._** when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (`contacts/`), calling `contacts.aspx` directly worked flawlessly. This is a C# port based on ScottGu's [solution](http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx).<!-- more -->
