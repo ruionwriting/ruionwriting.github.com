@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Databases on Rui Marques</title>
-    <link>http://localhost:1313/categories/databases/</link>
+    <link>http://ruimarques.io/categories/databases/</link>
     <description>Recent content in Databases on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Mon, 21 Apr 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/databases/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ruimarques.io/categories/databases/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>SQL Server: how to crawl all databases for data</title>
-      <link>http://localhost:1313/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</link>
+      <link>http://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</link>
       <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</guid>
+      <guid>http://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</guid>
       <description>
 
 &lt;p&gt;Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I&amp;rsquo;m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.&lt;/p&gt;
@@ -188,10 +188,10 @@ DROP TABLE #tmpSearchStrings
     
     <item>
       <title>SQL Server: (re)import CSV data the easy way</title>
-      <link>http://localhost:1313/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</link>
+      <link>http://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</link>
       <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</guid>
+      <guid>http://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</guid>
       <description>
 
 &lt;p&gt;Importing data into SQL Server is not hard using the import data feature but I really don&amp;rsquo;t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.&lt;/p&gt;

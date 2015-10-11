@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Asp Dotnet on Rui Marques</title>
-    <link>http://localhost:1313/categories/asp-dotnet/</link>
+    <link>http://ruimarques.io/categories/asp-dotnet/</link>
     <description>Recent content in Asp Dotnet on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Tue, 01 Oct 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/asp-dotnet/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ruimarques.io/categories/asp-dotnet/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Handling ASP.NET PostBacks with URL Rewriting</title>
-      <link>http://localhost:1313/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</link>
+      <link>http://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</link>
       <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</guid>
+      <guid>http://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</guid>
       <description>
 
 &lt;p&gt;Recently a collegue develop crossed with this strange error &lt;strong&gt;&lt;em&gt;Validation of viewstate MAC failed&amp;hellip;&lt;/em&gt;&lt;/strong&gt; when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (&lt;code&gt;contacts/&lt;/code&gt;), calling &lt;code&gt;contacts.aspx&lt;/code&gt; directly worked flawlessly. This is a C# port based on ScottGu&amp;rsquo;s &lt;a href=&#34;http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx&#34;&gt;solution&lt;/a&gt;.&lt;/p&gt;
@@ -115,10 +115,10 @@ public override void WriteAttribute(string name, string value, bool fEncode)
     
     <item>
       <title>The best web application framework utopia</title>
-      <link>http://localhost:1313/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
+      <link>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
       <pubDate>Tue, 24 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
+      <guid>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
       <description>
 
 &lt;p&gt;Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&amp;hellip; Ok! Not really :P&lt;/p&gt;

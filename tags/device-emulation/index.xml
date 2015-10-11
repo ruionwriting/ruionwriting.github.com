@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Device Emulation on Rui Marques</title>
-    <link>http://localhost:1313/tags/device-emulation/</link>
+    <link>http://ruimarques.io/tags/device-emulation/</link>
     <description>Recent content in Device Emulation on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Sat, 01 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/device-emulation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://ruimarques.io/tags/device-emulation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Device Emulation with Google Chrome Dev/Canary</title>
-      <link>http://localhost:1313/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
+      <link>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
       <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
+      <guid>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
       <description>
 
 &lt;p&gt;This week, after seeing a snapshot that my friend &amp;lsquo;led&amp;rsquo; posted on Facebook about some mobile tests for one of his projects, I&amp;rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&amp;hellip;. that is interesting.&lt;/p&gt;
@@ -34,7 +34,7 @@
 
 &lt;p&gt;A simple example on Windows 8:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;installing-canary-build-on-windows:9408c881343d1245651264cc6b93dcf9&#34;&gt;Installing Canary Build on Windows&lt;/h2&gt;
