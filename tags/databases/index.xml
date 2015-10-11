@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Databases on Rui Marques</title>
+    <link>http://localhost:1313/tags/databases/</link>
+    <description>Recent content in Databases on Rui Marques</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Rui Marques</copyright>
+    <lastBuildDate>Mon, 21 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/databases/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Server: how to crawl all databases for data</title>
+      <link>http://localhost:1313/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</link>
+      <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</guid>
+      <description>
+
+&lt;p&gt;Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I&amp;rsquo;m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.&lt;/p&gt;
+
+&lt;p&gt;In the last 3 years SQL Server has been around on my regular developer life but not with too much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.&lt;/p&gt;
+
+&lt;h2 id=&#34;problem:54c4e524f1999c6d4af7642f04bec4bb&#34;&gt;Problem&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I want to search across dozens of database on a specific server;&lt;/li&gt;
+&lt;li&gt;I need to search for a string in a predefined and limited number of potential column names. Why limited? Because string search with &lt;em&gt;LIKE&lt;/em&gt; is an expensive operation. In my scenario I was dealing with big databases (both in terms of data and number of table objects).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;plan:54c4e524f1999c6d4af7642f04bec4bb&#34;&gt;Plan&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Get a list of databases with the possibility of excluding some system databases;&lt;/li&gt;
+&lt;li&gt;For each database get a list of all user tables;&lt;/li&gt;
+&lt;li&gt;Get the list of columns for each table, with the potential column name;&lt;/li&gt;
+&lt;li&gt;Apply a search of each found columns;&lt;/li&gt;
+&lt;li&gt;Output the database, table and column names for every match.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sound simple&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;solution:54c4e524f1999c6d4af7642f04bec4bb&#34;&gt;Solution&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;-- selecting master database
+USE master
+GO
+
+SET NOCOUNT ON
+GO
+
+CREATE TABLE #tmpTables (
+    TableName NVARCHAR(300) NULL,
+    TableId       INT
+)
+GO
+
+CREATE TABLE #tmpColumns (
+    ColumnName NVARCHAR(300) NULL
+)
+GO
+
+CREATE TABLE #tmpSearchStrings (
+    id int identity(1,1),
+    SearchString NVARCHAR(500) NULL
+)
+GO
+
+DECLARE @Splited TABLE(id INT IDENTITY(1,1), item VARCHAR(MAX))
+
+DECLARE
+    @db_name        SYSNAME,
+    @db_id          INT,   
+    @cmd            NVARCHAR(300),
+    @search_string  VARCHAR(300),
+    @column_filter  VARCHAR(300),
+    @table_name     SYSNAME,
+    @table_id       INT,
+    @column_name    SYSNAME,
+    @sql_string     VARCHAR(2000),
+    @sql_like_expr  VARCHAR(max)
+
+-- init search string with search terms (comma separated for multiple)
+SET @search_string = &#39;bill@microsoft.com,bgates@microsoft.com&#39;
+SET @search_string = REPLACE(@search_string,&#39;,&#39;,&#39;&#39;&#39; UNION ALL SELECT &#39;&#39;&#39;)
+SET @search_string = &#39; SELECT  &#39;&#39;&#39;+ @search_string+&#39;&#39;&#39;  &#39;
+
+INSERT INTO #tmpSearchStrings
+EXEC(@search_string)
+
+-- crawl only tables with &#39;mail&#39; has being part of their name
+SET @column_filter = &#39;%mail%&#39;
+
+-- init the main cursor that with cycle across all databases
+-- note &#39;database_id &gt; 4&#39; is used to exclude system databases
+DECLARE db_cur CURSOR FOR select name, database_id FROM SYS.databases WHERE database_id &gt; 4 AND [name] NOT LIKE &#39;%some_other_database_to_exclude%&#39; ORDER BY name ASC
+OPEN db_cur
+
+FETCH NEXT FROM db_cur INTO @db_name, @db_id
+
+WHILE (@@FETCH_STATUS = 0)
+BEGIN   
+
+    -- build query for finding tables for the current database
+    SET @sql_string = &#39;SELECT name AS TableName, object_id AS TableId FROM [&#39; + CONVERT(NVARCHAR, @db_name) + &#39;].sys.tables&#39;
+
+    INSERT INTO #tmpTables
+        EXECUTE(@sql_string)
+
+    -- init the tables cursor to cycle through current database tables
+    DECLARE tables_cur CURSOR FOR SELECT TableName, TableId FROM #tmpTables
+    OPEN tables_cur
+
+    FETCH NEXT FROM tables_cur INTO @table_name, @table_id
+
+    WHILE (@@FETCH_STATUS = 0)
+    BEGIN           
+
+        -- build query for finding desired columns within current table
+        SET @sql_string = &#39;SELECT COLUMN_NAME as ColumnName From &#39; + @db_name + &#39;.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = &#39;&#39;&#39; + @table_name + &#39;&#39;&#39; AND COLUMN_NAME LIKE &#39;&#39;&#39; + @column_filter + &#39;&#39;&#39;&#39;
+
+        INSERT INTO #tmpColumns
+            EXECUTE(@sql_string)
+
+        -- init the columns cursor to cycle through current matching columns
+        DECLARE columns_cur CURSOR FOR SELECT ColumnName FROM #tmpColumns
+        OPEN columns_cur
+
+        FETCH NEXT FROM columns_cur INTO @column_name
+
+        WHILE (@@FETCH_STATUS = 0)
+        BEGIN                                               
+            SET @sql_like_expr = &#39;&#39;
+
+            -- init cursor to cycle through search string for current column
+            DECLARE expr_cur CURSOR FOR SELECT SearchString FROM #tmpSearchStrings
+            OPEN expr_cur
+
+            FETCH NEXT FROM expr_cur INTO @search_string
+
+            WHILE (@@FETCH_STATUS = 0)
+            BEGIN   
+                -- build search query expr with output if results are found
+                SET @sql_string = &#39;IF EXISTS (SELECT * FROM [&#39; + @db_name + &#39;].[dbo].[&#39; + @table_name + &#39;] WHERE [&#39; + @column_name + &#39;] LIKE &#39;&#39;%&#39; + @search_string + &#39;%&#39;&#39;) PRINT &#39;&#39;&#39; + @db_name + &#39;, &#39; + @table_name + &#39;, &#39; + @column_name + &#39;, &#39; + @search_string + &#39;&#39;&#39;&#39;
+                EXECUTE(@sql_string)
+
+                FETCH NEXT FROM expr_cur INTO @search_string
+            END
+
+            CLOSE expr_cur
+            DEALLOCATE expr_cur                 
+
+            FETCH NEXT FROM columns_cur INTO @column_name
+        END
+
+        CLOSE columns_cur
+        DEALLOCATE columns_cur
+
+        DELETE FROM #tmpColumns
+
+        FETCH NEXT FROM tables_cur INTO @table_name, @table_id
+    END
+
+    CLOSE tables_cur
+    DEALLOCATE tables_cur
+
+    DELETE FROM #tmpTables
+
+    FETCH NEXT FROM db_cur INTO @db_name, @db_id
+END
+
+-- close and deallocate databases cursos
+CLOSE db_cur
+DEALLOCATE db_cur
+
+-- drop temp tables
+DROP TABLE #tmpTables
+DROP TABLE #tmpColumns
+DROP TABLE #tmpSearchStrings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used mainly cursors. If you are not very familiarized with it check the &lt;a href=&#34;http://technet.microsoft.com/en-us/library/ms180169.aspx&#34;&gt;official documentation&lt;/a&gt; or this nice &lt;a href=&#34;http://www.mssqltips.com/sqlservertip/1599/sql-server-cursor-example/&#34;&gt;example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I hope you may found this useful.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SQL Server: (re)import CSV data the easy way</title>
+      <link>http://localhost:1313/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</link>
+      <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</guid>
+      <description>
+
+&lt;p&gt;Importing data into SQL Server is not hard using the import data feature but I really don&amp;rsquo;t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://technet.microsoft.com/en-us/library/ms188365.aspx&#34;&gt;BULK INSERT (Transact-SQL)&lt;/a&gt; is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I&amp;rsquo;m going to build a simple script using this nice feature.&lt;/p&gt;
+
+&lt;p&gt;For this example I have a simple CSV file containing a set of data from a fictional marketing contacts database.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;json&#34;&gt;Id;Name;EmailAddress;MobileNumber
+1;John;john@gmail.com;123456789
+2;Mary;mary@gmail.com;123456789
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to use BULK INSERT I need the target table structure to have the same structure as the source data. Not always this would be the case so I&amp;rsquo;m going to create a temporary table to hold my source data that will be retrieved from the BULK INSERT.&lt;/p&gt;
+
+&lt;h2 id=&#34;creating-the-temporary-table:7e7499f147e9fa1679b6c7ba5326a17f&#34;&gt;Creating the temporary table&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;-- Temporary table to hold CSV data
+CREATE TABLE #tempSource_Table_Name (
+    Id int,
+    [Name] nvarchar(500),
+    EmailAddress nvarchar(500) null,
+    MobileNumber nvarchar(500) null
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This temporary table columns definitions should reflect the source structure and columns types.&lt;/p&gt;
+
+&lt;p&gt;Now that I have a temporary table that can receive the source data from the CSV.&lt;/p&gt;
+
+&lt;h2 id=&#34;building-the-bulk-insert-script:7e7499f147e9fa1679b6c7ba5326a17f&#34;&gt;Building the BULK INSERT script&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;BULK INSERT #tempSource_Table_Name
+FROM &#39;C:\csv_file_full_path\source_table_data.csv&#39;
+WITH
+(
+    FIRSTROW = 2,
+    FIELDTERMINATOR = &#39;;&#39;,
+    ROWTERMINATOR = &#39;\n&#39;,
+    CODEPAGE = &#39;ACP&#39;
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m just applying a short set of the &lt;a href=&#34;http://technet.microsoft.com/en-us/library/ms188365.aspx&#34;&gt;available arguments&lt;/a&gt;. Based on your data source apply the necessary arguments.&lt;/p&gt;
+
+&lt;p&gt;This is a very powerful tool. Just for the example, is possible to have a source data file from a UNC share, take control over encoding, etc.&lt;/p&gt;
+
+&lt;p&gt;Now that I have a temporary table containing the imported data I can insert it to my target table applying some extra import rules and tweaks.&lt;/p&gt;
+
+&lt;h2 id=&#34;building-the-insert-script-for-the-target-table:7e7499f147e9fa1679b6c7ba5326a17f&#34;&gt;Building the insert script for the target table&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;-- insert data to target table
+INSERT INTO [dbo].[Target_Table_Name]
+   ([Name]
+   ,[MobileNumber]
+   ,[EmailAddress]
+   ,[Password]
+   ,[LastKnownIPAddress]
+   ,[CreatedOn]
+   ,[ChangedOn]
+   ,[VerifiedOn]
+   ,[Blocked]
+   ,[BlockEmailMarketing])
+SELECT
+    [Name]
+    ,[MobileNumber]
+    ,(
+        CASE
+            WHEN [EmailAddress] IS NULL
+                THEN CONCAT(CONVERT(varchar, [Id]), &#39;@example.com&#39;)
+            ELSE [EmailAddress]
+        END
+    )
+    ,NULL
+    ,NULL
+    ,(SELECT GETDATE())
+    ,NULL
+    ,NULL
+    ,0
+    ,0          
+FROM #tempSource_Table_Name
+-- apply any addional filtering/sorting as needed
+-- WHERE [Id] IS NOT NULL
+-- ORDER BY EmailAddress
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This example shows that is quite easy to apply some data transformations to the source data before inserting it on my target table. All the power of Transact-SQL is available to make a serious import script using this strategy.&lt;/p&gt;
+
+&lt;h2 id=&#34;improvement-ideas:7e7499f147e9fa1679b6c7ba5326a17f&#34;&gt;Improvement ideas&lt;/h2&gt;
+
+&lt;p&gt;Also I want to add to my import script some extra features:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;perform all my operations wrapped within a transaction;&lt;/li&gt;
+&lt;li&gt;sanitize data before import (useful I want to test the import multiple times);&lt;/li&gt;
+&lt;li&gt;demonstrate that is easy to import multiple files in one run.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;full-script:7e7499f147e9fa1679b6c7ba5326a17f&#34;&gt;Full script&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;sql&#34;&gt;/*
+    set target database
+*/
+
+USE [Target_Database_Name]
+GO
+
+/*
+    wrap everything in a transaction
+*/
+
+BEGIN TRAN
+GO
+
+/*
+    (optional) sanitize target table(s)
+*/
+
+-- remove all rows
+DELETE FROM [Target_Table_Name];
+GO
+
+-- if your the target table contains a identity key, reset its value
+DBCC CHECKIDENT ([Target_Table_Name], reseed, 0)
+GO
+
+-- extra sanitization operations like disabling triggers, FK&#39;s, etc
+
+/*
+    creat a temp table, for each CSV that you wish to import, to hold CSV data
+
+    example CSV:
+
+    Id;Name;EmailAddress;MobileNumber
+    1;John;john@gmail.com;123456789
+    2;Mary;mary@gmail.com;123456789
+
+    table structure and column types must match with the CSV
+*/
+
+CREATE TABLE #tempSource_Table_Name (
+    Id int,
+    [Name] nvarchar(500),
+    EmailAddress nvarchar(500) null,
+    MobileNumber nvarchar(500) null
+);
+GO
+
+/*
+    import CSV data to the temp table
+*/
+
+BULK INSERT #tempSource_Table_Name
+FROM &#39;C:\csv_file_full_path\source_table_data.csv&#39;
+WITH
+(
+    FIRSTROW = 2,
+    FIELDTERMINATOR = &#39;;&#39;,
+    ROWTERMINATOR = &#39;\n&#39;,
+    CODEPAGE = &#39;ACP&#39;
+);
+GO
+
+/*
+    insert data to the target table using temp table as the source
+    apply as many rules as needed to transform imput data
+*/
+
+INSERT INTO [dbo].[Target_Table_Name]
+   ([Name]
+   ,[MobileNumber]
+   ,[EmailAddress]
+   ,[Password]
+   ,[LastKnownIPAddress]
+   ,[CreatedOn]
+   ,[ChangedOn]
+   ,[VerifiedOn]
+   ,[Blocked]
+   ,[BlockEmailMarketing])
+SELECT
+    [Name]
+    ,[MobileNumber]
+    ,(
+        CASE
+            WHEN [EmailAddress] IS NULL
+                THEN CONCAT(CONVERT(varchar, [Id]), &#39;@example.com&#39;)
+            ELSE [EmailAddress]
+        END
+    )
+    ,NULL
+    ,NULL
+    ,(SELECT GETDATE())
+    ,NULL
+    ,NULL
+    ,0
+    ,0          
+FROM #tempSource_Table_Name
+-- apply any addional filtering/sorting as needed
+-- WHERE [Id] IS NOT NULL
+-- ORDER BY EmailAddress
+
+GO
+
+/*
+    drop temp table(s)
+*/
+
+DROP TABLE #tempSource_Table_Name;
+GO
+
+/*
+    extra operations
+*/
+
+-- enable triggers, FK&#39;s, etc
+
+/*
+    all good, time to commit transaction
+*/
+
+COMMIT TRAN
+GO
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

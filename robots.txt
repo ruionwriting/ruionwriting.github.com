@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /error/ 
 
-Sitemap: http://ruionwriting.net/sitemap.xml 
+Sitemap: http://ruimarques.io/sitemap.xml 

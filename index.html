@@ -1,362 +1,387 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta name="google-site-verification" content="RPCrkUZ6M_XUZjCh24KKPGFzP9MoVBP2qRV42ybBmVs" />
-  <title>RuiOnWriting.NET</title>
-  <meta name="author" content="Rui Marques">
+  <title>
+    Rui Marques
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.14" />
+
+  <meta property="og:title" content="Rui Marques" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://localhost:1313/" />
+
 
   
-  <meta name="description" content="Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all &hellip;">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
   
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://localhost:1313//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
 
   
-  <link rel="canonical" href="http://ruionwriting.net/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="RuiOnWriting.NET" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-7583950-3']);
-    _gaq.push(['_trackPageview']);
+  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Rui Marques" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
+  
+
+  
+
+  
 </head>
 
-<body   >
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:ruionwriting.net" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">
-        <span class="blue_light">
-            RuiOnWriting.NET
-        </span>
-       
-           <span class="blue_dark">
-             .net coding and stuff
-           </span>
-       
-    </a></li>
-  <li><a href="/">Blog</a></li>
-  <li><a href="/resources">Resources</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About me</a></li>
-</ul>
+<body>
+    <div id="layout" class="pure-g">
+        <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
 
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
+	
+	  <img src="/img/ruimarques.jpg" class="sidebarphoto">
+	
+
+    <h1 class="brand-title">Rui Marques</h1>
+    <h2 class="brand-tagline">Thoughts on software development, professional life, and continuous learning.</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://localhost:1313/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/blog/">Posts</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">SQL Server: how to crawl all databases for data</a></h1>
-    
-    
-      <p class="meta">
         
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-21T21:23:00+01:00" pubdate data-updated="true">Apr 21<span>st</span>, 2014</time>
+        <a href="http://www.twitter.com/ruionwriting" target="_blank"><i class='fa fa-twitter'>@ruionwriting</i></a>
         
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I’m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.</p>
-
-<p>In the last 3 years SQL Server has been around on my regular developer life but not with too much challenges. MySql, Sqlite3, etc is also also part of the fun but I tend to forget some stuff. This is reminder.
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a></h1>
-    
-    
-      <p class="meta">
         
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-12T19:31:00+01:00" pubdate data-updated="true">Apr 12<span>th</span>, 2014</time>
+        <a href="https://uk.linkedin.com/in/ruionwriting" target="_blank"><i class='fa fa-linkedin'></i></a>
         
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
-
-<p><a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">BULK INSERT (Transact-SQL)</a> is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I’m going to build a simple script using this nice feature.
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a></h1>
-    
-    
-      <p class="meta">
         
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T11:44:00+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        <a href="https://github.com/ruionwriting" target="_blank"><i class='fa fa-github'></i></a>
         
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This week, after seeing a snapshot that my friend ‘led’ posted on Facebook about some mobile tests for one of his projects, I’ve noticed about a certain device emulation feature  on Chrome developer tools. Hum…. that is interesting.</p>
-
-<p>A simple Google search directed me right away for something I’ve already was aware but with some new funky stuff: </p>
-
-<ul>
-  <li>
-    <p><a href="https://developers.google.com/chrome-developer-tools/docs/mobile-emulation">Chrome DevTools, Mobile Emulation</a></p>
-  </li>
-  <li>
-    <p><a href="http://www.chromium.org/getting-involved/dev-channel">Chrome Release Channels</a></p>
-  </li>
-</ul>
-
-<p>After the sexy photo we’ll get on how to install Chrome Canary build on Windows 8 and Chrome Dev on Arch Linux.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-    <h1>About Me</h1>
-    <p><img class="left" src="/images/RuiMarques.jpg" width="77" title="Rui Marques" > Hi, my name is Rui Marques. I’m a .NET programmer. Currently I work as senior developer at GradWeb, UK’s leading graduate, entry-level and volume recruitment specialist. I’m also a Parallels Certified Automation Professional both for Linux and Windows.</p>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">SQL Server: how to crawl all databases for data</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/14/improve-visual-studio-2013-performance/">Improve Visual Studio 2013 performance</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Handling ASP.NET PostBacks with URL Rewriting</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-    <h1>Categories</h1>
-    <ul id="categories">
-        <li class='category'><a href='/blog/categories/asp-net/'>ASP.NET (2)</a></li>
-<li class='category'><a href='/blog/categories/blogging/'>Blogging (1)</a></li>
-<li class='category'><a href='/blog/categories/csharp/'>CSharp (1)</a></li>
-<li class='category'><a href='/blog/categories/chrome/'>Chrome (1)</a></li>
-<li class='category'><a href='/blog/categories/databases/'>Databases (2)</a></li>
-<li class='category'><a href='/blog/categories/frameworks/'>Frameworks (1)</a></li>
-<li class='category'><a href='/blog/categories/iis/'>IIS (1)</a></li>
-<li class='category'><a href='/blog/categories/ms-sql/'>MS SQL (2)</a></li>
-<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
-<li class='category'><a href='/blog/categories/tools/'>Tools (2)</a></li>
-<li class='category'><a href='/blog/categories/visual-studio/'>Visual Studio (1)</a></li>
-<li class='category'><a href='/blog/categories/web-development/'>Web development (3)</a></li>
-
-    </ul>
-    <br />
-    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer&#8217;s view in any way.</p>
-</section>
-
-
-
-<section class="googleplus googleplus-hidden">
-  <h1>
-    <a href="https://plus.google.com/117718617897238411049?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
+      
 
     </div>
+    
+    <br />
+    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+    <p class="footnote">powered by <a href="http://gohugo.io/">Hugo</a> and <a href="https://github.com/tmaiaroto/hugo-redlounge">Red Lounge</a><br/>
+    &copy; 2015 Rui Marques. All rights reserved.</p>
   </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2014 - Rui Marques -
-<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> and 
-<span class="credit"><a href="https://github.com/wallace/justin-kelly-theme">justin-kelly-theme</a></span> 
-</p>
-
-</footer>
-  
-
-<script type="text/javascript">
-      var disqus_shortname = 'ruionwriting';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+</div>
 
 
+        <div class="content pure-u-1 pure-u-md-3-4">
+            <a name="top"></a>
+            
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+          <div class="posts">
+            
+            
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">SQL Server: how to crawl all databases for data</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>21</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Apr</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>4 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-databases" href="http://localhost:1313//categories/databases">Databases</a>
+                    
+                    <a class="post-category post-category-ms-sql" href="http://localhost:1313//categories/ms-sql">MS SQL</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  <p>Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I&rsquo;m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.</p>
 
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Apr</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>4 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-databases" href="http://localhost:1313//categories/databases">Databases</a>
+                    
+                    <a class="post-category post-category-ms-sql" href="http://localhost:1313//categories/ms-sql">MS SQL</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  <p>Importing data into SQL Server is not hard using the import data feature but I really don&rsquo;t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
 
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>1</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>2 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-tools" href="http://localhost:1313//categories/tools">Tools</a>
+                    
+                    <a class="post-category post-category-chrome" href="http://localhost:1313//categories/chrome">Chrome</a>
+                    
+                    <a class="post-category post-category-web-development" href="http://localhost:1313//categories/web-development">Web development</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  <p>This week, after seeing a snapshot that my friend &lsquo;led&rsquo; posted on Facebook about some mobile tests for one of his projects, I&rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&hellip;. that is interesting.</p>
 
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2014/02/14/improve-visual-studio-2013-performance/">Improve Visual Studio 2013 performance</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>14</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Feb</span> <span class="post-date-year">2014</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>1 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-tools" href="http://localhost:1313//categories/tools">Tools</a>
+                    
+                    <a class="post-category post-category-visual-studio" href="http://localhost:1313//categories/visual-studio">Visual Studio</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&rsquo;t caused by an extension? I&rsquo;ve tested turning of something I really don&rsquo;t need and the fact is that I&rsquo;ve noticed some improvements.&lt;!&ndash; more &ndash;&gt; Change visual experience settings Go to Tools &gt; Options, in the default view of Environment &gt; General, there is an option, under Visual experience called Automatically adjust visual experience based on client performance.
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2014/02/14/improve-visual-studio-2013-performance/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Handling ASP.NET PostBacks with URL Rewriting</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>1</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Oct</span> <span class="post-date-year">2013</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>2 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-asp-dotnet" href="http://localhost:1313//categories/asp-dotnet">ASP DotNET</a>
+                    
+                    <a class="post-category post-category-csharp" href="http://localhost:1313//categories/csharp">CSharp</a>
+                    
+                    <a class="post-category post-category-web-development" href="http://localhost:1313//categories/web-development">Web development</a>
+                    
+                    <a class="post-category post-category-iis" href="http://localhost:1313//categories/iis">IIS</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  <p>Recently a collegue develop crossed with this strange error <strong><em>Validation of viewstate MAC failed&hellip;</em></strong> when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (<code>contacts/</code>), calling <code>contacts.aspx</code> directly worked flawlessly.</p>
 
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+            <section  class="post">
+                <header class="post-header">
+                    
+                    <h1 class="post-title">
+                      <a href="/blog/2013/09/24/the-best-web-application-framework-utopia/">The best web application framework utopia</a>
+                  </h1>
+              </header>
+              <p class="post-meta">
+                  
+                  <span class="post-date">
+                    <span class="post-date-day"><sup>24</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2013</span>
+                </span>
+                
+                
+                    
+                
+                
+                    <span class="post-reading-time"><i class="fa fa-clock-o"></i> <em>2 min. read</em></span>
+                
+                
+                <div class="post-categories">
+                    
+                    <a class="post-category post-category-frameworks" href="http://localhost:1313//categories/frameworks">Frameworks</a>
+                    
+                    <a class="post-category post-category-web-development" href="http://localhost:1313//categories/web-development">Web development</a>
+                    
+                    <a class="post-category post-category-asp-dotnet" href="http://localhost:1313//categories/asp-dotnet">ASP DotNET</a>
+                    
+                </div>
+                
+            </p>
+            <article class="post-summary">
+                  <p>Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&hellip; Ok! Not really :P</p>
 
+              </article>
+              <div class="read-more-link">
+                  <a href="/blog/2013/09/24/the-best-web-application-framework-utopia/"><span class="read-more-slashes">//</span>Read More...</a>
+              </div>
+          </section>
+          
+          
+            
+          
+        </div>
 
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
+        <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
 
-
-
-
-
-</body>
+	<p>&copy; 2015. All rights reserved.</p>
+</div>
+        </div>
+    </div>
+    
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

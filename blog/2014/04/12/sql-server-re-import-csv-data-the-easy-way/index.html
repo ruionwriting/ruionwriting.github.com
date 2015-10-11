@@ -1,707 +1,512 @@
-
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <title>SQL Server: (re)import CSV data the easy way - RuiOnWriting.NET</title>
-  <meta name="author" content="Rui Marques">
+  <title>
+    SQL Server: (re)import CSV data the easy way // Rui Marques
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.14" />
+
+  <meta property="og:title" content="SQL Server: (re)import CSV data the easy way" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="http://localhost:1313/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/" />
+
 
   
-  <meta name="description" content="Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that &hellip;">
-  <meta name="keywords" content="ms sql, sql server, databases, csv, import">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://localhost:1313//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
 
   
-  <link rel="canonical" href="http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="RuiOnWriting.NET" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
 
   
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-7583950-3']);
-    _gaq.push(['_trackPageview']);
+  <link href="" rel="alternate" type="application/rss+xml" title="Rui Marques" />
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 
 
+  
+
+  
+
+  
 </head>
 
-<body   >
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:ruionwriting.net" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-    <li><a href="/">
-        <span class="blue_light">
-            RuiOnWriting.NET
-        </span>
-       
-           <span class="blue_dark">
-             .net coding and stuff
-           </span>
-       
-    </a></li>
-  <li><a href="/">Blog</a></li>
-  <li><a href="/resources">Resources</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/about">About me</a></li>
-</ul>
+<body>
+	
+		<div id="nav-to-top">
+			<span class="decorative-marker">//</span><a href="#top">To Top</a>
+		</div>
+	
 
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+	  <img src="/img/ruimarques.jpg" class="sidebarphoto">
+	
+
+    <h1 class="brand-title">Rui Marques</h1>
+    <h2 class="brand-tagline">Thoughts on software development, professional life, and continuous learning.</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="http://localhost:1313/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/blog/">Posts</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+        <a href="http://www.twitter.com/ruionwriting" target="_blank"><i class='fa fa-twitter'>@ruionwriting</i></a>
+        
+      
+        
+        <a href="https://uk.linkedin.com/in/ruionwriting" target="_blank"><i class='fa fa-linkedin'></i></a>
+        
+      
+        
+        <a href="https://github.com/ruionwriting" target="_blank"><i class='fa fa-github'></i></a>
+        
+      
+
+    </div>
+    
+    <br />
+    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer’s view in any way.</p>
+    <p class="footnote">powered by <a href="http://gohugo.io/">Hugo</a> and <a href="https://github.com/tmaiaroto/hugo-redlounge">Red Lounge</a><br/>
+    &copy; 2015 Rui Marques. All rights reserved.</p>
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#creating-the-temporary-table:7e7499f147e9fa1679b6c7ba5326a17f">Creating the temporary table</a></li>
+<li><a href="#building-the-bulk-insert-script:7e7499f147e9fa1679b6c7ba5326a17f">Building the BULK INSERT script</a></li>
+<li><a href="#building-the-insert-script-for-the-target-table:7e7499f147e9fa1679b6c7ba5326a17f">Building the insert script for the target table</a></li>
+<li><a href="#improvement-ideas:7e7499f147e9fa1679b6c7ba5326a17f">Improvement ideas</a></li>
+<li><a href="#full-script:7e7499f147e9fa1679b6c7ba5326a17f">Full script</a></li>
+</ul></li>
+</ul>
 </nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">SQL Server: (re)import CSV data the easy way</h1>
-    
-    
-      <p class="meta">
-        
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Apr</span> <span class="post-date-year">2014</span>
+            	</span>
+            	
+            
+            	
+            
 
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-databases" href="http://localhost:1313//categories/databases">Databases</a>
+				
+					<a class="post-category post-category-ms-sql" href="http://localhost:1313//categories/ms-sql">MS SQL</a>
+				
+				</div>
+			
 
+			
+		    	<div class="social-sharing">
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f&title=SQL%20Server%3a%20%28re%29import%20CSV%20data%20the%20easy%20way&summary=%3cp%3eImporting%20data%20into%20SQL%20Server%20is%20not%20hard%20using%20the%20import%20data%20feature%20but%20I%20really%20don%26rsquo%3bt%20appreciate%20the%20fact%20that%20there%20is%20no%20way%20to%20save%20that%20import%20profile%2frules%20for%20later%20reuse.%20Solution%3a%20use%20BULK%20INSERT%20from%20a%20regular%20reusable%20sql%20script.%3c%2fp%3e%0a}&source=Rui%20Marques" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=SQL%20Server%3a%20%28re%29import%20CSV%20data%20the%20easy%20way&url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
+</div>
+		    
 
+			
 
+            
 
+<p>Importing data into SQL Server is not hard using the import data feature but I really don&rsquo;t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
 
-
-
-  
-
-
-<time datetime="2014-04-12T19:31:00+01:00" pubdate data-updated="true">Apr 12<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>Importing data into SQL Server is not hard using the import data feature but I really don’t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.</p>
-
-<p><a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">BULK INSERT (Transact-SQL)</a> is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I’m going to build a simple script using this nice feature.
-<!--more--></p>
+<p><a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">BULK INSERT (Transact-SQL)</a> is a really nice feature that allows to easily create a reusable data import script capable of import one or many CSV files. I&rsquo;m going to build a simple script using this nice feature.</p>
 
 <p>For this example I have a simple CSV file containing a set of data from a fictional marketing contacts database.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Example CSV source </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">Id;Name;EmailAddress;MobileNumber
-</span><span class="line">1;John;john@gmail.com;123456789
-</span><span class="line">2;Mary;mary@gmail.com;123456789
-</span><span class="line">...</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code class="json">Id;Name;EmailAddress;MobileNumber
+1;John;john@gmail.com;123456789
+2;Mary;mary@gmail.com;123456789
+...
+</code></pre>
 
-<p>In order to use BULK INSERT I need the target table structure to have the same structure as the source data. Not always this would be the case so I’m going to create a temporary table to hold my source data that will be retrieved from the BULK INSERT.</p>
+<p>In order to use BULK INSERT I need the target table structure to have the same structure as the source data. Not always this would be the case so I&rsquo;m going to create a temporary table to hold my source data that will be retrieved from the BULK INSERT.</p>
 
-<p><strong>Creating the temporary table:</strong></p>
+<h2 id="creating-the-temporary-table:7e7499f147e9fa1679b6c7ba5326a17f">Creating the temporary table</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Temporary table to hold CSV data </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span> <span class="p">(</span>
-</span><span class="line">    <span class="n">Id</span> <span class="nb">int</span><span class="p">,</span>
-</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
-</span><span class="line">    <span class="n">EmailAddress</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span><span class="p">,</span>
-</span><span class="line">    <span class="n">MobileNumber</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span>
-</span><span class="line"><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code class="sql">-- Temporary table to hold CSV data
+CREATE TABLE #tempSource_Table_Name (
+    Id int,
+    [Name] nvarchar(500),
+    EmailAddress nvarchar(500) null,
+    MobileNumber nvarchar(500) null
+);
+</code></pre>
 
 <p>This temporary table columns definitions should reflect the source structure and columns types.</p>
 
 <p>Now that I have a temporary table that can receive the source data from the CSV.</p>
 
-<p><strong>Building the BULK INSERT script:</strong></p>
+<h2 id="building-the-bulk-insert-script:7e7499f147e9fa1679b6c7ba5326a17f">Building the BULK INSERT script</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>BULK INSERT </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="n">BULK</span> <span class="k">INSERT</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
-</span><span class="line"><span class="k">FROM</span> <span class="s1">&#39;C:\csv_file_full_path\source_table_data.csv&#39;</span>
-</span><span class="line"><span class="k">WITH</span>
-</span><span class="line"><span class="p">(</span>
-</span><span class="line">    <span class="n">FIRSTROW</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-</span><span class="line">    <span class="n">FIELDTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="n">ROWTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;\n&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="n">CODEPAGE</span> <span class="o">=</span> <span class="s1">&#39;ACP&#39;</span>
-</span><span class="line"><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code class="sql">BULK INSERT #tempSource_Table_Name
+FROM 'C:\csv_file_full_path\source_table_data.csv'
+WITH
+(
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ';',
+    ROWTERMINATOR = '\n',
+    CODEPAGE = 'ACP'
+);
+</code></pre>
 
-<p>I’m just applying a short set of the <a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">available arguments</a>. Based on your data source apply the necessary arguments.</p>
+<p>I&rsquo;m just applying a short set of the <a href="http://technet.microsoft.com/en-us/library/ms188365.aspx">available arguments</a>. Based on your data source apply the necessary arguments.</p>
 
 <p>This is a very powerful tool. Just for the example, is possible to have a source data file from a UNC share, take control over encoding, etc.</p>
 
 <p>Now that I have a temporary table containing the imported data I can insert it to my target table applying some extra import rules and tweaks.</p>
 
-<p><strong>Building the insert script for the target table:</strong></p>
+<h2 id="building-the-insert-script-for-the-target-table:7e7499f147e9fa1679b6c7ba5326a17f">Building the insert script for the target table</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Insert data to target table  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Target_Table_Name</span><span class="p">]</span>
-</span><span class="line">   <span class="p">([</span><span class="n">Name</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">EmailAddress</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">Password</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">LastKnownIPAddress</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">CreatedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">ChangedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">VerifiedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">Blocked</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">BlockEmailMarketing</span><span class="p">])</span>
-</span><span class="line"><span class="k">SELECT</span>
-</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
-</span><span class="line">    <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
-</span><span class="line">    <span class="p">,(</span>
-</span><span class="line">        <span class="k">CASE</span>
-</span><span class="line">            <span class="k">WHEN</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NULL</span>
-</span><span class="line">                <span class="k">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">varchar</span><span class="p">,</span> <span class="p">[</span><span class="n">Id</span><span class="p">]),</span> <span class="s1">&#39;@example.com&#39;</span><span class="p">)</span>
-</span><span class="line">            <span class="k">ELSE</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
-</span><span class="line">        <span class="k">END</span>
-</span><span class="line">    <span class="p">)</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,(</span><span class="k">SELECT</span> <span class="n">GETDATE</span><span class="p">())</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
-</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
-</span><span class="line"><span class="k">FROM</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
-</span><span class="line"><span class="c1">-- apply any addional filtering/sorting as needed</span>
-</span><span class="line"><span class="c1">-- WHERE [Id] IS NOT NULL</span>
-</span><span class="line"><span class="c1">-- ORDER BY EmailAddress</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code class="sql">-- insert data to target table
+INSERT INTO [dbo].[Target_Table_Name]
+   ([Name]
+   ,[MobileNumber]
+   ,[EmailAddress]
+   ,[Password]
+   ,[LastKnownIPAddress]
+   ,[CreatedOn]
+   ,[ChangedOn]
+   ,[VerifiedOn]
+   ,[Blocked]
+   ,[BlockEmailMarketing])
+SELECT
+    [Name]
+    ,[MobileNumber]
+    ,(
+        CASE
+            WHEN [EmailAddress] IS NULL
+                THEN CONCAT(CONVERT(varchar, [Id]), '@example.com')
+            ELSE [EmailAddress]
+        END
+    )
+    ,NULL
+    ,NULL
+    ,(SELECT GETDATE())
+    ,NULL
+    ,NULL
+    ,0
+    ,0          
+FROM #tempSource_Table_Name
+-- apply any addional filtering/sorting as needed
+-- WHERE [Id] IS NOT NULL
+-- ORDER BY EmailAddress
+</code></pre>
 
 <p>This example shows that is quite easy to apply some data transformations to the source data before inserting it on my target table. All the power of Transact-SQL is available to make a serious import script using this strategy.</p>
 
-<p><strong>Also I want to add to my import script some extra features:</strong></p>
+<h2 id="improvement-ideas:7e7499f147e9fa1679b6c7ba5326a17f">Improvement ideas</h2>
+
+<p>Also I want to add to my import script some extra features:</p>
 
 <ul>
-  <li>perform all my operations wrapped within a transaction;</li>
-  <li>sanitize data before import (useful I want to test the import multiple times);</li>
-  <li>demonstrate that is easy to import multiple files in one run.</li>
+<li>perform all my operations wrapped within a transaction;</li>
+<li>sanitize data before import (useful I want to test the import multiple times);</li>
+<li>demonstrate that is easy to import multiple files in one run.</li>
 </ul>
 
-<p><strong>Here the full script:</strong></p>
+<h2 id="full-script:7e7499f147e9fa1679b6c7ba5326a17f">Full script</h2>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Complete script with comments  </span></figcaption>
- <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-<span class="line-number">68</span>
-<span class="line-number">69</span>
-<span class="line-number">70</span>
-<span class="line-number">71</span>
-<span class="line-number">72</span>
-<span class="line-number">73</span>
-<span class="line-number">74</span>
-<span class="line-number">75</span>
-<span class="line-number">76</span>
-<span class="line-number">77</span>
-<span class="line-number">78</span>
-<span class="line-number">79</span>
-<span class="line-number">80</span>
-<span class="line-number">81</span>
-<span class="line-number">82</span>
-<span class="line-number">83</span>
-<span class="line-number">84</span>
-<span class="line-number">85</span>
-<span class="line-number">86</span>
-<span class="line-number">87</span>
-<span class="line-number">88</span>
-<span class="line-number">89</span>
-<span class="line-number">90</span>
-<span class="line-number">91</span>
-<span class="line-number">92</span>
-<span class="line-number">93</span>
-<span class="line-number">94</span>
-<span class="line-number">95</span>
-<span class="line-number">96</span>
-<span class="line-number">97</span>
-<span class="line-number">98</span>
-<span class="line-number">99</span>
-<span class="line-number">100</span>
-<span class="line-number">101</span>
-<span class="line-number">102</span>
-<span class="line-number">103</span>
-<span class="line-number">104</span>
-<span class="line-number">105</span>
-<span class="line-number">106</span>
-<span class="line-number">107</span>
-<span class="line-number">108</span>
-<span class="line-number">109</span>
-<span class="line-number">110</span>
-<span class="line-number">111</span>
-<span class="line-number">112</span>
-<span class="line-number">113</span>
-<span class="line-number">114</span>
-<span class="line-number">115</span>
-<span class="line-number">116</span>
-<span class="line-number">117</span>
-<span class="line-number">118</span>
-<span class="line-number">119</span>
-<span class="line-number">120</span>
-<span class="line-number">121</span>
-<span class="line-number">122</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="cm">/* </span>
-</span><span class="line"><span class="cm">    set target database</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="n">USE</span> <span class="p">[</span><span class="n">Target_Database_Name</span><span class="p">]</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/* </span>
-</span><span class="line"><span class="cm">    wrap everything in a transaction </span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="k">BEGIN</span> <span class="n">TRAN</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/* </span>
-</span><span class="line"><span class="cm">    (optional) sanitize target table(s)</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">-- remove all rows</span>
-</span><span class="line"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="p">[</span><span class="n">Target_Table_Name</span><span class="p">];</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">-- if your the target table contains a identity key, reset its value</span>
-</span><span class="line"><span class="n">DBCC</span> <span class="n">CHECKIDENT</span> <span class="p">([</span><span class="n">Target_Table_Name</span><span class="p">],</span> <span class="n">reseed</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">-- extra sanitization operations like disabling triggers, FK&#39;s, etc</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/*</span>
-</span><span class="line"><span class="cm">    creat a temp table, for each CSV that you wish to import, to hold CSV data</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">    example CSV:</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">    Id;Name;EmailAddress;MobileNumber</span>
-</span><span class="line"><span class="cm">    1;John;john@gmail.com;123456789</span>
-</span><span class="line"><span class="cm">    2;Mary;mary@gmail.com;123456789</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">    table structure and column types must match with the CSV</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span> <span class="p">(</span>
-</span><span class="line">    <span class="n">Id</span> <span class="nb">int</span><span class="p">,</span>
-</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">),</span>
-</span><span class="line">    <span class="n">EmailAddress</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span><span class="p">,</span>
-</span><span class="line">    <span class="n">MobileNumber</span> <span class="n">nvarchar</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="k">null</span>
-</span><span class="line"><span class="p">);</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/*</span>
-</span><span class="line"><span class="cm">    import CSV data to the temp table</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="n">BULK</span> <span class="k">INSERT</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
-</span><span class="line"><span class="k">FROM</span> <span class="s1">&#39;C:\csv_file_full_path\source_table_data.csv&#39;</span>
-</span><span class="line"><span class="k">WITH</span>
-</span><span class="line"><span class="p">(</span>
-</span><span class="line">    <span class="n">FIRSTROW</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-</span><span class="line">    <span class="n">FIELDTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="n">ROWTERMINATOR</span> <span class="o">=</span> <span class="s1">&#39;\n&#39;</span><span class="p">,</span>
-</span><span class="line">    <span class="n">CODEPAGE</span> <span class="o">=</span> <span class="s1">&#39;ACP&#39;</span>
-</span><span class="line"><span class="p">);</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/*</span>
-</span><span class="line"><span class="cm">    insert data to the target table using temp table as the source</span>
-</span><span class="line"><span class="cm">    apply as many rules as needed to transform imput data</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">Target_Table_Name</span><span class="p">]</span>
-</span><span class="line">   <span class="p">([</span><span class="n">Name</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">EmailAddress</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">Password</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">LastKnownIPAddress</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">CreatedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">ChangedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">VerifiedOn</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">Blocked</span><span class="p">]</span>
-</span><span class="line">   <span class="p">,[</span><span class="n">BlockEmailMarketing</span><span class="p">])</span>
-</span><span class="line"><span class="k">SELECT</span>
-</span><span class="line">    <span class="p">[</span><span class="n">Name</span><span class="p">]</span>
-</span><span class="line">    <span class="p">,[</span><span class="n">MobileNumber</span><span class="p">]</span>
-</span><span class="line">    <span class="p">,(</span>
-</span><span class="line">        <span class="k">CASE</span>
-</span><span class="line">            <span class="k">WHEN</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span> <span class="k">IS</span> <span class="k">NULL</span>
-</span><span class="line">                <span class="k">THEN</span> <span class="n">CONCAT</span><span class="p">(</span><span class="k">CONVERT</span><span class="p">(</span><span class="nb">varchar</span><span class="p">,</span> <span class="p">[</span><span class="n">Id</span><span class="p">]),</span> <span class="s1">&#39;@example.com&#39;</span><span class="p">)</span>
-</span><span class="line">            <span class="k">ELSE</span> <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
-</span><span class="line">        <span class="k">END</span>
-</span><span class="line">    <span class="p">)</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,(</span><span class="k">SELECT</span> <span class="n">GETDATE</span><span class="p">())</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="k">NULL</span>
-</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
-</span><span class="line">    <span class="p">,</span><span class="mi">0</span>
-</span><span class="line"><span class="k">FROM</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span>
-</span><span class="line"><span class="c1">-- apply any addional filtering/sorting as needed</span>
-</span><span class="line"><span class="c1">-- WHERE [Id] IS NOT NULL</span>
-</span><span class="line"><span class="c1">-- ORDER BY EmailAddress</span>
-</span><span class="line">
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/*</span>
-</span><span class="line"><span class="cm">    drop temp table(s)</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="o">#</span><span class="n">tempSource_Table_Name</span><span class="p">;</span>
-</span><span class="line"><span class="k">GO</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/* </span>
-</span><span class="line"><span class="cm">    extra operations</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">-- enable triggers, FK&#39;s, etc</span>
-</span><span class="line">
-</span><span class="line"><span class="cm">/*</span>
-</span><span class="line"><span class="cm">    all good, time to commit transaction</span>
-</span><span class="line"><span class="cm">*/</span>
-</span><span class="line">
-</span><span class="line"><span class="k">COMMIT</span> <span class="n">TRAN</span>
-</span><span class="line"><span class="k">GO</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<pre><code class="sql">/*
+    set target database
+*/
 
+USE [Target_Database_Name]
+GO
+
+/*
+    wrap everything in a transaction
+*/
+
+BEGIN TRAN
+GO
+
+/*
+    (optional) sanitize target table(s)
+*/
+
+-- remove all rows
+DELETE FROM [Target_Table_Name];
+GO
+
+-- if your the target table contains a identity key, reset its value
+DBCC CHECKIDENT ([Target_Table_Name], reseed, 0)
+GO
+
+-- extra sanitization operations like disabling triggers, FK's, etc
+
+/*
+    creat a temp table, for each CSV that you wish to import, to hold CSV data
+
+    example CSV:
+
+    Id;Name;EmailAddress;MobileNumber
+    1;John;john@gmail.com;123456789
+    2;Mary;mary@gmail.com;123456789
+
+    table structure and column types must match with the CSV
+*/
+
+CREATE TABLE #tempSource_Table_Name (
+    Id int,
+    [Name] nvarchar(500),
+    EmailAddress nvarchar(500) null,
+    MobileNumber nvarchar(500) null
+);
+GO
+
+/*
+    import CSV data to the temp table
+*/
+
+BULK INSERT #tempSource_Table_Name
+FROM 'C:\csv_file_full_path\source_table_data.csv'
+WITH
+(
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ';',
+    ROWTERMINATOR = '\n',
+    CODEPAGE = 'ACP'
+);
+GO
+
+/*
+    insert data to the target table using temp table as the source
+    apply as many rules as needed to transform imput data
+*/
+
+INSERT INTO [dbo].[Target_Table_Name]
+   ([Name]
+   ,[MobileNumber]
+   ,[EmailAddress]
+   ,[Password]
+   ,[LastKnownIPAddress]
+   ,[CreatedOn]
+   ,[ChangedOn]
+   ,[VerifiedOn]
+   ,[Blocked]
+   ,[BlockEmailMarketing])
+SELECT
+    [Name]
+    ,[MobileNumber]
+    ,(
+        CASE
+            WHEN [EmailAddress] IS NULL
+                THEN CONCAT(CONVERT(varchar, [Id]), '@example.com')
+            ELSE [EmailAddress]
+        END
+    )
+    ,NULL
+    ,NULL
+    ,(SELECT GETDATE())
+    ,NULL
+    ,NULL
+    ,0
+    ,0          
+FROM #tempSource_Table_Name
+-- apply any addional filtering/sorting as needed
+-- WHERE [Id] IS NOT NULL
+-- ORDER BY EmailAddress
+
+GO
+
+/*
+    drop temp table(s)
+*/
+
+DROP TABLE #tempSource_Table_Name;
+GO
+
+/*
+    extra operations
+*/
+
+-- enable triggers, FK's, etc
+
+/*
+    all good, time to commit transaction
+*/
+
+COMMIT TRAN
+GO
+</code></pre>
+
+	
+			
+		    	<div class="social-sharing">
+	<a class="share-button-facebook" onClick="return popupShare(this.href);" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-facebook"><span>Like</span></i></a>
+	<a class="share-button-google-plus" onClick="return popupShare(this.href);" href="https://plus.google.com/share?url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-google-plus"><span>Google +1</span></i></a>
+	<a class="share-button-linkedin" onClick="return popupShare(this.href);" href="http://www.linkedin.com/shareArticle?mini=true&url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f&title=SQL%20Server%3a%20%28re%29import%20CSV%20data%20the%20easy%20way&summary=%3cp%3eImporting%20data%20into%20SQL%20Server%20is%20not%20hard%20using%20the%20import%20data%20feature%20but%20I%20really%20don%26rsquo%3bt%20appreciate%20the%20fact%20that%20there%20is%20no%20way%20to%20save%20that%20import%20profile%2frules%20for%20later%20reuse.%20Solution%3a%20use%20BULK%20INSERT%20from%20a%20regular%20reusable%20sql%20script.%3c%2fp%3e%0a}&source=Rui%20Marques" target="_blank"><i class="fa fa-linkedin"><span>Share on LinkedIn</span></i></a>
+	<a class="share-button-twitter" onClick="return popupShare(this.href);" href="http://twitter.com/share?text=SQL%20Server%3a%20%28re%29import%20CSV%20data%20the%20easy%20way&url=http%3a%2f%2flocalhost%3a1313%2fblog%2f2014%2f04%2f12%2fsql-server-re-import-csv-data-the-easy-way%2f" target="_blank"><i class="fa fa-twitter"><span>Tweet</span></i></a>	
 </div>
+		    
 
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-ms-sql" href="http://localhost:1313//tags/ms-sql">ms sql</a>,
+	                
+	                <a class="post-tag post-tag-sql-server" href="http://localhost:1313//tags/sql-server">sql server</a>,
+	                
+	                <a class="post-tag post-tag-databases" href="http://localhost:1313//tags/databases">databases</a>,
+	                
+	                <a class="post-tag post-tag-import" href="http://localhost:1313//tags/import">import</a>,
+	                
+				</div>
+			
 
-  <footer>
-    <p class="meta">
-      
-  
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">SQL Server: how to crawl all databases for data</a>
+		            </div>
+		            
 
-<span class="byline author vcard">Posted by <span class="fn">Rui Marques</span></span>
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'ruionwriting';
+    var disqus_identifier = 'http:\/\/localhost:1313\/blog\/2014\/04\/12\/sql-server-re-import-csv-data-the-easy-way\/';
+    var disqus_title = 'SQL Server: (re)import CSV data the easy way';
+    var disqus_url = 'http:\/\/localhost:1313\/blog\/2014\/04\/12\/sql-server-re-import-csv-data-the-easy-way\/';
 
-      
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-12T19:31:00+01:00" pubdate data-updated="true">Apr 12<span>th</span>, 2014</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/databases/'>Databases</a>, <a class='category' href='/blog/categories/ms-sql/'>MS SQL</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/" data-via="ruionwriting" data-counturl="http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
+	<p>&copy; 2015. All rights reserved.</p>
 </div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/" title="Previous Post: Device Emulation with Google Chrome Dev/Canary">&laquo; Device Emulation with Google Chrome Dev/Canary</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/" title="Next Post: SQL Server: how to crawl all databases for data">SQL Server: how to crawl all databases for data &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-  </section>
-
-</div>
-
-<aside class="sidebar">
-  
-    <section>
-    <h1>About Me</h1>
-    <p><img class="left" src="/images/RuiMarques.jpg" width="77" title="Rui Marques" > Hi, my name is Rui Marques. I’m a .NET programmer. Currently I work as senior developer at GradWeb, UK’s leading graduate, entry-level and volume recruitment specialist. I’m also a Parallels Certified Automation Professional both for Linux and Windows.</p>
-</section>
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/">SQL Server: how to crawl all databases for data</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/">SQL Server: (re)import CSV data the easy way</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/">Device Emulation with Google Chrome Dev/Canary</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/14/improve-visual-studio-2013-performance/">Improve Visual Studio 2013 performance</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/">Handling ASP.NET PostBacks with URL Rewriting</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-    <h1>Categories</h1>
-    <ul id="categories">
-        <li class='category'><a href='/blog/categories/asp-net/'>ASP.NET (2)</a></li>
-<li class='category'><a href='/blog/categories/blogging/'>Blogging (1)</a></li>
-<li class='category'><a href='/blog/categories/csharp/'>CSharp (1)</a></li>
-<li class='category'><a href='/blog/categories/chrome/'>Chrome (1)</a></li>
-<li class='category'><a href='/blog/categories/databases/'>Databases (2)</a></li>
-<li class='category'><a href='/blog/categories/frameworks/'>Frameworks (1)</a></li>
-<li class='category'><a href='/blog/categories/iis/'>IIS (1)</a></li>
-<li class='category'><a href='/blog/categories/ms-sql/'>MS SQL (2)</a></li>
-<li class='category'><a href='/blog/categories/octopress/'>Octopress (1)</a></li>
-<li class='category'><a href='/blog/categories/tools/'>Tools (2)</a></li>
-<li class='category'><a href='/blog/categories/visual-studio/'>Visual Studio (1)</a></li>
-<li class='category'><a href='/blog/categories/web-development/'>Web development (3)</a></li>
-
-    </ul>
-    <br />
-    <p><strong>Disclaimer:</strong> The opinions expressed herein are my own personal opinions and do not represent my employer's view in any way.</p>
-</section>
-
-
-
-<section class="googleplus googleplus-hidden">
-  <h1>
-    <a href="https://plus.google.com/117718617897238411049?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-
     </div>
   </div>
-  <footer role="contentinfo"><p>
-Copyright &copy; 2014 - Rui Marques -
-<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span> and 
-<span class="credit"><a href="https://github.com/wallace/justin-kelly-theme">justin-kelly-theme</a></span> 
-</p>
+	
+		<script type="text/javascript">
+			onscroll = function() {
+			  var toTopVisible = false;
+			  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			  if (scrollTop > 1000) {
+			    if (!toTopVisible) {
+			      document.getElementById('nav-to-top').style.display = 'block';
+			    }
+			  } else {
+			    if (scrollTop < 1000 || toTopVisible) {
+			      document.getElementById('nav-to-top').style.display = 'none';
+			    }
+			  }
+			};
+		</script>
+	
 
-</footer>
+	
+		<script type="text/javascript">
+			function popupShare(url) {
+				window.open(url, '_blank', 'scrollbars,resizable,height=525,width=600');
+				return false;
+			}
+		</script>
+	
+
   
-
-<script type="text/javascript">
-      var disqus_shortname = 'ruionwriting';
-      
-        
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/';
-        var disqus_url = 'http://ruionwriting.net/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/';
-        var disqus_script = 'embed.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
-
-
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-  <script type="text/javascript">
-    (function() {
-      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
-      script.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
-    })();
-  </script>
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>
