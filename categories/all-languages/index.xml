@@ -40,7 +40,7 @@
 &lt;li&gt;We all know this: less dependencies is less requests, less request sizes and faster load times. No brainer.&lt;/li&gt;
 &lt;li&gt;Keep the amount of dependencies as low as possible. Less moving part less risks;&lt;/li&gt;
 &lt;li&gt;As the number of dependencies increases as well the amount of work required to keep them up to date will increase over time. Take AngularJS, Angular UI, ui-router - and related - as a good example;&lt;/li&gt;
-&lt;li&gt;Avoid adding full libraries for additional limited functionality that you plan to use on a limited context/scope in your project;&lt;/li&gt;
+&lt;li&gt;Avoid adding full libraries for additional limited functionality that we plan to use on a limited context/scope in your project;&lt;/li&gt;
 &lt;li&gt;It&amp;rsquo;s always a good idea to solve any problem writing the less code as possible. Adding the minimum number of dependencies as possible is also a good way to keep our feet dry.&lt;/li&gt;
 &lt;/ul&gt;
 
