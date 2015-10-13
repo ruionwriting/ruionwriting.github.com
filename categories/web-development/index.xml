@@ -26,7 +26,7 @@
 
 &lt;h2 id=&#34;when-to-introduce-a-dependency:ab997d5f860b7f84eff37d36fa23ccb1&#34;&gt;When to introduce a dependency?&lt;/h2&gt;
 
-&lt;p&gt;Every time we need to solve a problem that is already solved and there is no existing code on the current project is in general a good idea to add an existing dependency if it not falls on &lt;em&gt;&lt;code&gt;When NOT to introduce a dependency?&lt;/code&gt;&lt;/em&gt; bellow. It does not matter if it is 3rd party or from our internal packages repository - let&amp;rsquo;s say NuGet/Bower for the sake of a clear example - if the problem is already solved let&amp;rsquo;s not repeat ourselves and let&amp;rsquo;s keep our focus on delivering what we are building and trying to deliver.&lt;/p&gt;
+&lt;p&gt;Every time we need to solve a problem that is already solved and there is no existing code on the current project is in general a good idea to add an existing dependency if it not falls on &lt;em&gt;&lt;code&gt;When NOT to introduce a dependency?&lt;/code&gt;&lt;/em&gt; below. It does not matter if it is 3rd party or from our internal packages repository - let&amp;rsquo;s say NuGet/Bower for the sake of a clear example - if the problem is already solved let&amp;rsquo;s not repeat ourselves and let&amp;rsquo;s keep our focus on delivering what we are building and trying to deliver.&lt;/p&gt;
 
 &lt;h2 id=&#34;when-not-to-introduce-a-dependency:ab997d5f860b7f84eff37d36fa23ccb1&#34;&gt;When NOT to introduce a dependency?&lt;/h2&gt;
 
