@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Asp Dot Net on Rui Marques</title>
-    <link>http://ruimarques.io/tags/asp-dot-net/</link>
+    <link>https://ruimarques.io/tags/asp-dot-net/</link>
     <description>Recent content in Asp Dot Net on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Tue, 24 Sep 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ruimarques.io/tags/asp-dot-net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ruimarques.io/tags/asp-dot-net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The best web application framework utopia</title>
-      <link>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
+      <link>https://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
       <pubDate>Tue, 24 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
+      <guid>https://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
       <description>
 
 &lt;p&gt;Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&amp;hellip; Ok! Not really :P&lt;/p&gt;

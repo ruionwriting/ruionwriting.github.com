@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on Rui Marques</title>
-    <link>http://ruimarques.io/categories/programming/</link>
+    <link>https://ruimarques.io/categories/programming/</link>
     <description>Recent content in Programming on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Mon, 12 Oct 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ruimarques.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ruimarques.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Keep your web project dependencies under control</title>
-      <link>http://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</link>
+      <link>https://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</link>
       <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</guid>
+      <guid>https://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</guid>
       <description>
 
 &lt;p&gt;These days almost any project we work on relies on dependencies (sometimes too many) on which we need to keep our eyes on. In general - in particular for big projects - can become a challenge to keep things under control as the projects evolve over time. If we consider the most common needs for web development we know that we need to have a good number of libraries and frameworks around.&lt;/p&gt;

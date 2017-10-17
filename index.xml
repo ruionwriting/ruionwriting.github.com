@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rui Marques</title>
-    <link>http://ruimarques.io/</link>
+    <link>https://ruimarques.io/</link>
     <description>Recent content on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Mon, 12 Oct 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ruimarques.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ruimarques.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Keep your web project dependencies under control</title>
-      <link>http://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</link>
+      <link>https://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</link>
       <pubDate>Mon, 12 Oct 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</guid>
+      <guid>https://ruimarques.io/blog/2015/10/12/keep-your-web-project-dependencies-under-control/</guid>
       <description>
 
 &lt;p&gt;These days almost any project we work on relies on dependencies (sometimes too many) on which we need to keep our eyes on. In general - in particular for big projects - can become a challenge to keep things under control as the projects evolve over time. If we consider the most common needs for web development we know that we need to have a good number of libraries and frameworks around.&lt;/p&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>SQL Server: how to crawl all databases for data</title>
-      <link>http://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</link>
+      <link>https://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</link>
       <pubDate>Mon, 21 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</guid>
+      <guid>https://ruimarques.io/blog/2014/04/21/sql-server-how-to-crawl-all-databases-for-data/</guid>
       <description>
 
 &lt;p&gt;Some weeks back I was challenged to figure out a way to easily, and without killing the server, track the location of some string data on all databases on a certain server. This is the result. (Btw, I&amp;rsquo;m not a DBA and this may not be the most optimal solution). Worked without any damage and gave the expected results.&lt;/p&gt;
@@ -92,10 +92,10 @@
     
     <item>
       <title>SQL Server: (re)import CSV data the easy way</title>
-      <link>http://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</link>
+      <link>https://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</link>
       <pubDate>Sat, 12 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</guid>
+      <guid>https://ruimarques.io/blog/2014/04/12/sql-server-re-import-csv-data-the-easy-way/</guid>
       <description>
 
 &lt;p&gt;Importing data into SQL Server is not hard using the import data feature but I really don&amp;rsquo;t appreciate the fact that there is no way to save that import profile/rules for later reuse. Solution: use BULK INSERT from a regular reusable sql script.&lt;/p&gt;
@@ -325,10 +325,10 @@ GO
     
     <item>
       <title>Device Emulation with Google Chrome Dev/Canary</title>
-      <link>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
+      <link>https://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
       <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
+      <guid>https://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
       <description>
 
 &lt;p&gt;This week, after seeing a snapshot that my friend &amp;lsquo;led&amp;rsquo; posted on Facebook about some mobile tests for one of his projects, I&amp;rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&amp;hellip;. that is interesting.&lt;/p&gt;
@@ -347,7 +347,7 @@ GO
 
 &lt;p&gt;A simple example on Windows 8:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;installing-canary-build-on-windows:9408c881343d1245651264cc6b93dcf9&#34;&gt;Installing Canary Build on Windows&lt;/h2&gt;
@@ -392,10 +392,10 @@ GO
     
     <item>
       <title>Improve Visual Studio 2013 performance</title>
-      <link>http://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</link>
+      <link>https://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</link>
       <pubDate>Fri, 14 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</guid>
+      <guid>https://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</guid>
       <description>
 
 &lt;p&gt;We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&amp;rsquo;t caused by an extension?&lt;/p&gt;
@@ -406,12 +406,12 @@ GO
 
 &lt;p&gt;Go to &lt;code&gt;Tools &amp;gt; Options&lt;/code&gt;, in the default view of &lt;code&gt;Environment &amp;gt; General&lt;/code&gt;, there is an option, under &lt;code&gt;Visual experience&lt;/code&gt; called &lt;strong&gt;Automatically adjust visual experience based on client performance&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS01.png&#34; alt=&#34;Visual experience (before)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS01.png&#34; alt=&#34;Visual experience (before)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Turning this off will disable visual client visual experience and hardware graphics acceleration.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS02.png&#34; alt=&#34;Visual experience (after)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS02.png&#34; alt=&#34;Visual experience (after)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;This will take effect after you restart Visual Studio.&lt;/p&gt;
@@ -420,12 +420,12 @@ GO
 
 &lt;p&gt;This is more a personal preference. I don&amp;rsquo;t want to wait for the default environment to load with news, latest opened projects/solutions/files, etc. Latest projects and files are always available through the &lt;code&gt;File&lt;/code&gt; menu options.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS03.png&#34; alt=&#34;Startup (before)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS03.png&#34; alt=&#34;Startup (before)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Switch to empty environment and disable content download. It&amp;rsquo;s strange to have content download enabled after switching to empty environment.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS04.png&#34; alt=&#34;Startup (after)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS04.png&#34; alt=&#34;Startup (after)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now every time I start a new Visual Studio instance, I do that a lot during any normal work day, it loads clean and faster.&lt;/p&gt;
@@ -434,10 +434,10 @@ GO
     
     <item>
       <title>Handling ASP.NET PostBacks with URL Rewriting</title>
-      <link>http://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</link>
+      <link>https://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</link>
       <pubDate>Tue, 01 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</guid>
+      <guid>https://ruimarques.io/blog/2013/10/01/handling-asp-dot-net-postbacks-with-url-rewriting/</guid>
       <description>
 
 &lt;p&gt;Recently a collegue develop crossed with this strange error &lt;strong&gt;&lt;em&gt;Validation of viewstate MAC failed&amp;hellip;&lt;/em&gt;&lt;/strong&gt; when posting a contacts form. Strangely the error only happened when using the re-written url off the contacts page (&lt;code&gt;contacts/&lt;/code&gt;), calling &lt;code&gt;contacts.aspx&lt;/code&gt; directly worked flawlessly. This is a C# port based on ScottGu&amp;rsquo;s &lt;a href=&#34;http://weblogs.asp.net/scottgu/archive/2007/02/26/tip-trick-url-rewriting-with-asp-net.aspx&#34;&gt;solution&lt;/a&gt;.&lt;/p&gt;
@@ -537,10 +537,10 @@ public override void WriteAttribute(string name, string value, bool fEncode)
     
     <item>
       <title>The best web application framework utopia</title>
-      <link>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
+      <link>https://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</link>
       <pubDate>Tue, 24 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
+      <guid>https://ruimarques.io/blog/2013/09/24/the-best-web-application-framework-utopia/</guid>
       <description>
 
 &lt;p&gt;Many times I found IT professionals, in particular programmers, arguing about what is the best technology to adopt for a certain project or for all projects for a specific company. As a web developer with several years getting the hands dirty with .NET development I found myself frequently observing (or getting in to) discussions about the subject. I really try to avoid to get in the middle&amp;hellip; Ok! Not really :P&lt;/p&gt;
@@ -567,10 +567,10 @@ public override void WriteAttribute(string name, string value, bool fEncode)
     
     <item>
       <title>About</title>
-      <link>http://ruimarques.io/about/</link>
+      <link>https://ruimarques.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/about/</guid>
+      <guid>https://ruimarques.io/about/</guid>
       <description>&lt;p&gt;&lt;br /&gt;
 I am a Software Engineer at &lt;a href=&#34;http://www.newvoicemedia.com/&#34;&gt;NewVoiceMedia&lt;/a&gt;, working on &lt;a href=&#34;http://www.newvoicemedia.com/products/service/workforce-management/&#34;&gt;Perform&lt;/a&gt; a workforce management solution.&lt;br/&gt;My main focus is .NET and AngularJS.&lt;/p&gt;
 

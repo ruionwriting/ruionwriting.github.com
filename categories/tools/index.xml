@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on Rui Marques</title>
-    <link>http://ruimarques.io/categories/tools/</link>
+    <link>https://ruimarques.io/categories/tools/</link>
     <description>Recent content in Tools on Rui Marques</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Rui Marques</copyright>
     <lastBuildDate>Sat, 01 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://ruimarques.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ruimarques.io/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Device Emulation with Google Chrome Dev/Canary</title>
-      <link>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
+      <link>https://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</link>
       <pubDate>Sat, 01 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
+      <guid>https://ruimarques.io/blog/2014/03/01/device-emulation-with-google-chrome-dev-slash-canary/</guid>
       <description>
 
 &lt;p&gt;This week, after seeing a snapshot that my friend &amp;lsquo;led&amp;rsquo; posted on Facebook about some mobile tests for one of his projects, I&amp;rsquo;ve noticed about a certain device emulation feature  on Chrome developer tools. Hum&amp;hellip;. that is interesting.&lt;/p&gt;
@@ -34,7 +34,7 @@
 
 &lt;p&gt;A simple example on Windows 8:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/device-emulation-with-google-chrome-dev-slash-canary/2014-03-01_canary_on_windows.png&#34; alt=&#34;Nokia Lumia emulation&#34; /&gt;
 &lt;/p&gt;
 
 &lt;h2 id=&#34;installing-canary-build-on-windows:9408c881343d1245651264cc6b93dcf9&#34;&gt;Installing Canary Build on Windows&lt;/h2&gt;
@@ -79,10 +79,10 @@
     
     <item>
       <title>Improve Visual Studio 2013 performance</title>
-      <link>http://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</link>
+      <link>https://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</link>
       <pubDate>Fri, 14 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</guid>
+      <guid>https://ruimarques.io/blog/2014/02/14/improve-visual-studio-2013-performance/</guid>
       <description>
 
 &lt;p&gt;We all know that one of the main causes for Visual Studio to slow down is the use of many extensions simultaneously. Extra functionality means extra stuff happening under the hood, ultimately extra processing. What can I do if I the issue isn&amp;rsquo;t caused by an extension?&lt;/p&gt;
@@ -93,12 +93,12 @@
 
 &lt;p&gt;Go to &lt;code&gt;Tools &amp;gt; Options&lt;/code&gt;, in the default view of &lt;code&gt;Environment &amp;gt; General&lt;/code&gt;, there is an option, under &lt;code&gt;Visual experience&lt;/code&gt; called &lt;strong&gt;Automatically adjust visual experience based on client performance&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS01.png&#34; alt=&#34;Visual experience (before)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS01.png&#34; alt=&#34;Visual experience (before)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Turning this off will disable visual client visual experience and hardware graphics acceleration.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS02.png&#34; alt=&#34;Visual experience (after)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS02.png&#34; alt=&#34;Visual experience (after)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;This will take effect after you restart Visual Studio.&lt;/p&gt;
@@ -107,12 +107,12 @@
 
 &lt;p&gt;This is more a personal preference. I don&amp;rsquo;t want to wait for the default environment to load with news, latest opened projects/solutions/files, etc. Latest projects and files are always available through the &lt;code&gt;File&lt;/code&gt; menu options.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS03.png&#34; alt=&#34;Startup (before)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS03.png&#34; alt=&#34;Startup (before)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Switch to empty environment and disable content download. It&amp;rsquo;s strange to have content download enabled after switching to empty environment.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS04.png&#34; alt=&#34;Startup (after)&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;https://ruimarques.io/media/2014/improve-visual-studio-2013-performance/2014-02-14_VS04.png&#34; alt=&#34;Startup (after)&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Now every time I start a new Visual Studio instance, I do that a lot during any normal work day, it loads clean and faster.&lt;/p&gt;
