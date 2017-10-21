@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Micro Services on Rui Marques, Software Engineer and DevOps enthusiast</title>
+    <link>https://ruimarques.io/categories/micro-services/</link>
+    <description>Recent content in Micro Services on Rui Marques, Software Engineer and DevOps enthusiast</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 16 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://ruimarques.io/categories/micro-services/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Service telemetry with Grafana and InfluxDB - Part III: Annotations</title>
+      <link>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-iii-annotations/</link>
+      <pubDate>Mon, 16 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-iii-annotations/</guid>
+      <description> Introduction This is a 3-part series that takes you from setting up a dev environment to actually get a production ready solution for realtime metrics for any application or service.
+ Part 1 - Setup Part 2 - Fundamentals Part 3 - Anotations  some code her  </description>
+    </item>
+    
+    <item>
+      <title>Service telemetry with Grafana and InfluxDB - Part II: Fundamentals</title>
+      <link>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-ii-fundamentals/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-ii-fundamentals/</guid>
+      <description> Introduction This is a 3-part series that takes you from setting up a dev environment to actually get a production ready solution for realtime metrics for any application or service.
+ Part 1 - Setup Part 2 - Fundamentals Part 3 - Anotations  some code her  </description>
+    </item>
+    
+    <item>
+      <title>Service telemetry with Grafana and InfluxDB - Part I: Setup</title>
+      <link>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-setup/</link>
+      <pubDate>Sat, 14 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-setup/</guid>
+      <description> Introduction This is a 3-part series that takes you from setting up a dev environment to actually get a production ready solution for realtime metrics for any application or service.
+ Part 1 - Setup Part 2 - Fundamentals Part 3 - Anotations  var a = 1 // comment  </description>
+    </item>
+    
+  </channel>
+</rss>

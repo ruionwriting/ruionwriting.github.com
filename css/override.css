@@ -1,0 +1,27 @@
+/* Main page with stikky-footer */
+html, body {
+  border-top: 3px solid #7F1000;
+}
+
+.container a {
+  color: #7F1000;
+}
+
+.container a:hover {
+  color: #E54028;
+}
+
+.panel-default h4 a, h5 a {
+  color: #E54028;
+}
+.panel-default h4 a:hover, h5 a:hover {
+  color: #E54028;
+}
+
+div.footer{
+  border-bottom: 5px solid #7F1000;;
+}
+
+.label-success {
+  background-color: rgb(180, 86, 73);  
+}
