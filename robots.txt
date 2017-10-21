@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /error/ 
-
-Sitemap: https://ruimarques.io/sitemap.xml 
