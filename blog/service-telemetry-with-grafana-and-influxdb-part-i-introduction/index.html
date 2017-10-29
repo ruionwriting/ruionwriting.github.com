@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="map[]" />
+    <meta name="description" content="Thoughts on software development, professional life, and continuous learning.">
+    <link rel="shortcut icon" type="image/x-icon" href="https://ruimarques.io/img/favicon.ico">
+    <title>Service telemetry with Grafana and InfluxDB - Part I: Introduction</title>
+    <meta name="generator" content="Hugo 0.30" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://ruimarques.io/css/main.css" /><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/tomorrow.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old" />
+    
+    <link rel="stylesheet" href="https://ruimarques.io/css/override.css">
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108429176-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+
+  <body>
+    <div id="wrap">
+
+      
+      <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://ruimarques.io/"><i class="fa fa-home"></i></a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+        
+        <li><a href="/blog/">BLOG</a></li>
+        
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      
+      <div class="container">
+        <div class="blog-post">
+          <h3>
+            <strong><a href="https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-introduction/">Service telemetry with Grafana and InfluxDB - Part I: Introduction</a></strong>
+          </h3>
+        </div>
+        <div class="blog-title">
+          <h4>
+          October 29, 2017
+            &nbsp;&nbsp;
+            
+            <span class="label label-success">grafana</span>
+            
+            <span class="label label-success">influxdb</span>
+            
+            <span class="label label-success">statsd</span>
+            
+            <span class="label label-success">testing</span>
+            
+          </h4>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="blogpost">
+              
+
+<h1 id="introduction">Introduction</h1>
+
+<blockquote>
+<p>This is the first post from a four-part series that will take you through the basic concepts, building the development environment and actually get a production ready solution for real-time metrics for any application/service.</p>
+
+<p><strong>SPOILER</strong>: At the end of these series you&rsquo;ll be able to deliver a production ready metrics system and build great dashboards with <a href="https://grafana.com/grafana">Grafana</a> with an <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> back-end.</p>
+</blockquote>
+
+<h2 id="why-use-metrics">Why use metrics</h2>
+
+<p>I&rsquo;m privileged to work on a team where metrics became a fundamental part of <a href="https://www.agilealliance.org/glossary/definition-of-done/">Definition of Done</a> and as a result of that pretty much everyone grasps this topic very well and contributes to the constant improvement of our dashboards.</p>
+
+<p>We use metrics to surface very valuable telemetry information from all the services that the team builds and manages. Many tools can monitor any process but nothing replaces the value and truth from the information that the service broadcast from it&rsquo;s process.</p>
+
+<p>Storing metrics on a time series database like <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> and visualizing your data with <a href="https://grafana.com/grafana">Grafana</a> is a great way to &ldquo;read&rdquo; your service or set of services behaviour from errors to performance aspects. These are amazing tools, explore them (or similar alternatives) and you won&rsquo;t regret it.</p>
+
+<h2 id="use-cases">Use cases</h2>
+
+<p>A short list of some cool metrics you can add to your services and the benefit you can extract:</p>
+
+<ul>
+<li><p>Graph heartbeat signal similar to ECG to give you a nice perspective of the health state. Perfect to observe service state when upgrading and restarting;</p></li>
+
+<li><p>Graph HTTP requests and their response time. Perfect to read the way your service performs;</p></li>
+
+<li><p>Extending the previous to show the time it took to retrieve data from the database;</p></li>
+
+<li><p>Graph error/exception rates. Imagine you&rsquo;re deploying a new version of your service and you can combine a visualization with your logs to see if everything is going alright with the new version;</p></li>
+
+<li><p>Show an annotation with a few labels every time a service starts/stop. Expose useful information like hostname, version, etc, on service start up;</p></li>
+
+<li><p>And so many other examples.</p></li>
+</ul>
+
+<h2 id="sneak-peek">Sneak-peek</h2>
+
+<p>Starting a some basic example that we&rsquo;ll explore during this series:</p>
+
+
+<figure >
+    
+        <img src="../../img/blog/service-telemetry/Grafana-API-Dashboard-Sample.png" alt="Sample dashboard for HTTP API" width="70%" />
+    
+    
+    <figcaption>
+        <p>
+        Graphing requests count and response times of HTTP requests
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<p>Get a feeling of the many possibilities <a href="http://play.grafana.org/dashboard/db/grafana-play-home?orgId=1">Grafana Demo Dashboards</a>:</p>
+
+
+<figure >
+    
+        <img src="../../img/blog/service-telemetry/Grafana-Demo-Dashboards.png" alt="Grafana Demo Dashboards preview" width="70%" />
+    
+    
+    <figcaption>
+        <p>
+        A world of possibilities
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="what-s-next">What&rsquo;s next</h2>
+
+<p>In this series, I&rsquo;ll take you through the fundamental steps to bring these concepts and tools into your services. I&rsquo;ll attempt to refine the information along the way in similar manner I&rsquo;ve been doing while running a basic workshop with some of the teams I interact with.</p>
+
+<p>Stay tune for my next post where I&rsquo;ll take you through the details on how to setup a quick and easy development environment using Vagrant.</p>
+
+<blockquote>
+<p>PS: a big thanks to <a href="https://twitter.com/_MattDavey_">@<em>MattDavey</em></a> that introduced the fundamentals to me and the team. He&rsquo;s fault that we&rsquo;re all now hooked to metrics and Grafana in particular.</p>
+</blockquote>
+
+              <hr>
+              <div class="related-posts">
+                <h5>Related Posts</h5>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+        <div class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+
+    (function() {
+      
+      
+      if (window.location.hostname == "localhost")
+        return;
+
+      var disqus_shortname = 'ruionwriting';
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <footer>
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+      <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</p>
+    </div>
+  </div>
+</footer>
+<div class="footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ruimarques.io/js/docs.min.js"></script>
+<script src="https://ruimarques.io/js/main.js"></script>
+
+<script src="https://ruimarques.io/js/ie10-viewport-bug-workaround.js"></script><!-- Syntax highlighting -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>

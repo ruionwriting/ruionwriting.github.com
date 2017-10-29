@@ -2,17 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-introduction/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/blog/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ruimarques.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://ruimarques.io/tags/grafana/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/tags/influxdb/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/categories/micro-services/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/categories/monitoring/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://ruimarques.io/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/tags/statsd/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://ruimarques.io/tags/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/categories/telemetry/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://ruimarques.io/tags/testing/</loc>
+    <lastmod>2017-10-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

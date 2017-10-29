@@ -10,5 +10,32 @@
 	<atom:link href="https://ruimarques.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Micro Services</title>
+      <link>https://ruimarques.io/categories/micro-services/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/categories/micro-services/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monitoring</title>
+      <link>https://ruimarques.io/categories/monitoring/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/categories/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Telemetry</title>
+      <link>https://ruimarques.io/categories/telemetry/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://ruimarques.io/categories/telemetry/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
