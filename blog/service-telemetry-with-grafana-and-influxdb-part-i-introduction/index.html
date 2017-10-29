@@ -91,32 +91,6 @@ ga('send', 'pageview');
 <p><strong>SPOILER</strong>: At the end of these series you&rsquo;ll be able to deliver a production ready metrics system and build great dashboards with <a href="https://grafana.com/grafana">Grafana</a> with an <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> back-end.</p>
 </blockquote>
 
-<h2 id="why-use-metrics">Why use metrics</h2>
-
-<p>I&rsquo;m privileged to work on a team where metrics became a fundamental part of <a href="https://www.agilealliance.org/glossary/definition-of-done/">Definition of Done</a> and as a result of that pretty much everyone grasps this topic very well and contributes to the constant improvement of our dashboards.</p>
-
-<p>We use metrics to surface very valuable telemetry information from all the services that the team builds and manages. Many tools can monitor any process but nothing replaces the value and truth from the information that the service broadcast from it&rsquo;s process.</p>
-
-<p>Storing metrics on a time series database like <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> and visualizing your data with <a href="https://grafana.com/grafana">Grafana</a> is a great way to &ldquo;read&rdquo; your service or set of services behaviour from errors to performance aspects. These are amazing tools, explore them (or similar alternatives) and you won&rsquo;t regret it.</p>
-
-<h2 id="use-cases">Use cases</h2>
-
-<p>A short list of some cool metrics you can add to your services and the benefit you can extract:</p>
-
-<ul>
-<li><p>Graph heartbeat signal similar to ECG to give you a nice perspective of the health state. Perfect to observe service state when upgrading and restarting;</p></li>
-
-<li><p>Graph HTTP requests and their response time. Perfect to read the way your service performs;</p></li>
-
-<li><p>Extending the previous to show the time it took to retrieve data from the database;</p></li>
-
-<li><p>Graph error/exception rates. Imagine you&rsquo;re deploying a new version of your service and you can combine a visualization with your logs to see if everything is going alright with the new version;</p></li>
-
-<li><p>Show an annotation with a few labels every time a service starts/stop. Expose useful information like hostname, version, etc, on service start up;</p></li>
-
-<li><p>And so many other examples.</p></li>
-</ul>
-
 <h2 id="sneak-peek">Sneak-peek</h2>
 
 <p>Starting a some basic example that we&rsquo;ll explore during this series:</p>
@@ -158,6 +132,32 @@ ga('send', 'pageview');
     
 </figure>
 
+
+<h2 id="why-use-metrics">Why use metrics</h2>
+
+<p>I&rsquo;m privileged to work on a team where metrics became a fundamental part of <a href="https://www.agilealliance.org/glossary/definition-of-done/">Definition of Done</a> and as a result of that pretty much everyone grasps this topic very well and contributes to the constant improvement of our dashboards.</p>
+
+<p>We use metrics to surface very valuable telemetry information from all the services that the team builds and manages. Many tools can monitor any process but nothing replaces the value and truth from the information that the service broadcast from it&rsquo;s process.</p>
+
+<p>Storing metrics on a time series database like <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> and visualizing your data with <a href="https://grafana.com/grafana">Grafana</a> is a great way to &ldquo;read&rdquo; your service or set of services behaviour from errors to performance aspects. These are amazing tools, explore them (or similar alternatives) and you won&rsquo;t regret it.</p>
+
+<h2 id="use-cases">Use cases</h2>
+
+<p>A short list of some cool metrics you can add to your services and the benefit you can extract:</p>
+
+<ul>
+<li><p>Graph heartbeat signal similar to ECG to give you a nice perspective of the health state. Perfect to observe service state when upgrading and restarting;</p></li>
+
+<li><p>Graph HTTP requests and their response time. Perfect to read the way your service performs;</p></li>
+
+<li><p>Extending the previous to show the time it took to retrieve data from the database;</p></li>
+
+<li><p>Graph error/exception rates. Imagine you&rsquo;re deploying a new version of your service and you can combine a visualization with your logs to see if everything is going alright with the new version;</p></li>
+
+<li><p>Show an annotation with a few labels every time a service starts/stop. Expose useful information like hostname, version, etc, on service start up;</p></li>
+
+<li><p>And so many other examples.</p></li>
+</ul>
 
 <h2 id="what-s-next">What&rsquo;s next</h2>
 
