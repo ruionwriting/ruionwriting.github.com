@@ -6,7 +6,7 @@
     <description>Recent content in Statsd on Rui Marques, Software Engineer and DevOps enthusiast</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
-    <lastBuildDate>Sun, 29 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://ruimarques.io/tags/statsd/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Service telemetry with Grafana and InfluxDB - Part I: Introduction</title>
       <link>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-introduction/</link>
-      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 30 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-introduction/</guid>
       <description>Introduction  This is the first post from a four-part series that will take you through the basic concepts, building the development environment and actually get a production ready solution for real-time metrics for any application/service.
