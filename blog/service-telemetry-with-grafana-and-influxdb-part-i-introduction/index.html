@@ -86,7 +86,7 @@ ga('send', 'pageview');
 <h1 id="introduction">Introduction</h1>
 
 <blockquote>
-<p>This is the first post from a four-part series that will take you through the basic concepts, building the development environment and actually get a production ready solution for real-time metrics for any application/service.</p>
+<p>This is the first post from a four-part series that will take you through the basic concepts, building the development environment and a production ready solution for real-time metrics for any application/service.</p>
 
 <p><strong>SPOILER</strong>: At the end of these series you&rsquo;ll be able to deliver a production ready metrics system and build great dashboards with <a href="https://grafana.com/grafana">Grafana</a> with an <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> back-end.</p>
 </blockquote>
@@ -98,7 +98,7 @@ ga('send', 'pageview');
 
 <figure >
     
-        <img src="../../img/blog/service-telemetry/Grafana-API-Dashboard-Sample.png" alt="Sample dashboard for HTTP API" width="70%" />
+        <img src="../../img/blog/service-telemetry/Grafana-API-Dashboard-Sample.png" alt="Sample dashboard for HTTP API" width="100%" />
     
     
     <figcaption>
@@ -118,7 +118,7 @@ ga('send', 'pageview');
 
 <figure >
     
-        <img src="../../img/blog/service-telemetry/Grafana-Demo-Dashboards.png" alt="Grafana Demo Dashboards preview" width="70%" />
+        <img src="../../img/blog/service-telemetry/Grafana-Demo-Dashboards.png" alt="Grafana Demo Dashboards preview" width="100%" />
     
     
     <figcaption>
@@ -135,9 +135,9 @@ ga('send', 'pageview');
 
 <h2 id="why-use-metrics">Why use metrics</h2>
 
-<p>I&rsquo;m privileged to work on a team where metrics became a fundamental part of <a href="https://www.agilealliance.org/glossary/definition-of-done/">Definition of Done</a> and as a result of that pretty much everyone grasps this topic very well and contributes to the constant improvement of our dashboards.</p>
+<p>I&rsquo;m privileged to work on a team where metrics became a fundamental part of <a href="https://www.agilealliance.org/glossary/definition-of-done/">Definition of Done</a> and as a result, pretty much everyone grasps this topic very well and contributes to the constant improvement of our dashboards.</p>
 
-<p>We use metrics to surface very valuable telemetry information from all the services that the team builds and manages. Many tools can monitor any process but nothing replaces the value and truth from the information that the service broadcast from its process.</p>
+<p>We use metrics to surface valuable telemetry information from all the services that the team builds and manages. Many tools can monitor any process, but nothing replaces the value and truth from the information that the service broadcasts from its process.</p>
 
 <p>Storing metrics on a time series database like <a href="https://www.influxdata.com/time-series-platform/influxdb/">InfluxDB</a> and visualizing your data with <a href="https://grafana.com/grafana">Grafana</a> is a great way to &ldquo;read&rdquo; your service or set of services behaviour from errors to performance aspects. These are amazing tools, explore them (or similar alternatives) and you won&rsquo;t regret it.</p>
 
@@ -146,27 +146,25 @@ ga('send', 'pageview');
 <p>A short list of some cool metrics you can add to your services and the benefit you can extract:</p>
 
 <ul>
-<li><p>Graph heartbeat signal similar to ECG to give you a nice perspective of the health state. Perfect to observe service state when upgrading and restarting;</p></li>
+<li><p>Graph heartbeat signal similar to an ECG to give you a nice perspective of the health state. Perfect to observe service state when upgrading and restarting;</p></li>
 
 <li><p>Graph HTTP requests and their response time. Perfect to read the way your service performs;</p></li>
 
-<li><p>Extending the previous to show the time it took to retrieve data from the database;</p></li>
+<li><p>Extending the previous metrics to show the time it took to retrieve data from the database;</p></li>
 
-<li><p>Graph error/exception rates. Imagine you&rsquo;re deploying a new version of your service and you can combine a visualization with your logs to see if everything is going alright with the new version;</p></li>
+<li><p>Graph error/exception rates. Imagine you&rsquo;re deploying a new version of your service and you can combine a visualization with your logs to see if everything is alright with the new version;</p></li>
 
-<li><p>Show an annotation with a few labels every time a service starts/stop. Expose useful information like hostname, version, etc, on service start up;</p></li>
+<li><p>Show an annotation with a few labels every time a service starts or stops. Expose useful information like hostname, version, etc, on service start up;</p></li>
 
 <li><p>And so many other examples.</p></li>
 </ul>
 
 <h2 id="what-s-next">What&rsquo;s next</h2>
 
-<p>In this series, I&rsquo;ll take you through the fundamental steps to bring these concepts and tools into your services. I&rsquo;ll attempt to refine the information along the way in similar manner I&rsquo;ve been doing while running a basic workshop with some of the teams I interact with.</p>
-
-<p>Stay tune for my next post where I&rsquo;ll take you through the details on how to setup a quick and easy development environment using Vagrant.</p>
+<p>Stay tuned for my next post where I&rsquo;ll take you through the details of how to setup a quick and easy development environment using Vagrant.</p>
 
 <blockquote>
-<p>PS: a big thanks to <a href="https://twitter.com/_MattDavey_">@<em>MattDavey</em></a> that introduced the fundamentals to me and the team. He&rsquo;s fault that we&rsquo;re all now hooked to metrics and Grafana in particular.</p>
+<p>PS: A big thanks to <a href="https://twitter.com/_MattDavey_">@<em>MattDavey</em></a> who introduced the fundamentals to me and the team. It&rsquo;s his fault that we&rsquo;re all now hooked on metrics and Grafana in particular.</p>
 </blockquote>
 
               <hr>

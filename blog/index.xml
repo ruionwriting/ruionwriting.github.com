@@ -17,7 +17,7 @@
       <pubDate>Mon, 30 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://ruimarques.io/blog/service-telemetry-with-grafana-and-influxdb-part-i-introduction/</guid>
-      <description>Introduction  This is the first post from a four-part series that will take you through the basic concepts, building the development environment and actually get a production ready solution for real-time metrics for any application/service.
+      <description>Introduction  This is the first post from a four-part series that will take you through the basic concepts, building the development environment and a production ready solution for real-time metrics for any application/service.
 SPOILER: At the end of these series you&amp;rsquo;ll be able to deliver a production ready metrics system and build great dashboards with Grafana with an InfluxDB back-end.
  Sneak-peek Starting a somewhat basic example that we&amp;rsquo;ll explore during this series:</description>
     </item>
